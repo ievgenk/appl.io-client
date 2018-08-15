@@ -1,0 +1,63 @@
+html,
+body,
+main {
+  height: 100%;
+  width: 100%;
+  font-size: 10px;
+}
+
+nav {
+  font-style: italic;
+  border-bottom: 5px solid black;
+}
+nav h1 {
+  padding: 10px;
+  font-size: 4rem;
+}
+
+#top-half-background {
+  background-color: lightskyblue;
+  height: 50%;
+  width: 100%;
+  display: inline-block;
+  border-bottom: 3px black solid;
+  margin: 0;
+}
+#bottom-half-background {
+  background-color: dodgerblue;
+  height: 50%;
+  width: 100%;
+  display: inline-block;
+  border-top: 3px black solid;
+  margin-top: -6px;
+}
+
+#slogan {
+  font-size: 6rem;
+  text-align: center;
+  position: absolute;
+  top: 51%;
+  left: 5%;
+}
+
+#register-login-form {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  font-size: 3rem;
+  background-color: white;
+  padding: 25px;
+  border-radius: 3px;
+}
+
+#register-login-form label {
+  margin: 5px;
+}
+
+#register-login-form input {
+  margin: 10px;
+}
