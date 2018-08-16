@@ -2,25 +2,36 @@ import React, { Component } from "react";
 import NavBar from "./NavBar";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
-import { Grid, Cell } from "styled-css-grid";
+import styled from "styled-components";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+
+const LandingGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
+  height: 100vh;
+  width: 100vw;
+  grid-template-rows: repeat(10, minmax(100px, max-content));
+`;
+
+const LandingMessage = styled.h1`
+  grid-column: 2 / 4;
+  font-size: 5.5rem;
+  grid-row: 3 / 5;
+`;
 
 export default class LandingPage extends Component {
   render() {
     return !this.props.isLoggedIn ? (
       <Router>
-        <Grid columns={12}>
-          <Cell width={12}>
-            <NavBar />
-          </Cell>
-          <Cell width={4} left={8} top={8}>
-            <Route exact path="/" component={LoginForm} />
-            <Route path="/register" component={RegisterForm} />
-          </Cell>
-          <Cell width={5} left={2} top={8}>
-            <h1>Track Your Job Applications With Ease!</h1>
-          </Cell>
-        </Grid>
+        <LandingGrid>
+          <NavBar />
+          <Route exact path="/" component={LoginForm} />
+          <Route path="/register" component={RegisterForm} />
+          <LandingMessage>
+            Track Your Job Applications With Ease!
+          </LandingMessage>
+        </LandingGrid>
       </Router>
     ) : (
       <Redirect to="/dashboard" />

@@ -6,6 +6,9 @@ const RegForm = styled.form`
   flex-direction: column;
   border: 2px black solid;
   padding: 20px;
+  grid-column: 8 / 12;
+  font-size: 2.4rem;
+  grid-row: 3 / 7;
 `;
 
 export default class RegisterForm extends Component {
