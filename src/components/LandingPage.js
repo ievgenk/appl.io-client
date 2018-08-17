@@ -15,7 +15,7 @@ const LandingGrid = styled.div`
 `;
 
 const LandingMessage = styled.h1`
-  grid-column: 2 / 4;
+  grid-column: 2 / 6;
   font-size: 5.5rem;
   grid-row: 3 / 5;
 `;
@@ -29,7 +29,10 @@ export default class LandingPage extends Component {
           <Route exact path="/" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />
           <LandingMessage>
-            Track Your Job Applications With Ease!
+            🔍 Track Your
+            <br /> 💼 Job
+            <br /> 📝 Applications
+            <br /> 👌 With Ease!
           </LandingMessage>
         </LandingGrid>
       </Router>
