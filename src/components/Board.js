@@ -39,7 +39,7 @@ export default class Board extends Component {
       <BoardWrapper>
         <header>{title}</header>
         <CardList>
-          {this.props.workcards.map(card => (
+          {this.props.workCards.map(card => (
             <Card workData={card} />
           ))}
         </CardList>
@@ -48,15 +48,15 @@ export default class Board extends Component {
   }
 }
 
-Board.defaultProps = {
-  workcards: [
-    { title: "Random Title, just long enough" },
-    { title: "Random Title, just long enough" },
-    { title: "Random Title, just long enoughasdsadas dsad asdasad " },
-    { title: "Random Title, just long enough" },
-    { title: "Random Title, just long enough" },
-    { title: "Random Title, just long enough" },
-    { title: "Random Title, just long enoughasdsadas dsad asdasad " },
-    { title: "Random Title, just long enough" }
-  ]
-};
+// Board.defaultProps = {
+//   workcards: [
+//     { title: "Random Title, just long enough" },
+//     { title: "Random Title, just long enough" },
+//     { title: "Random Title, just long enoughasdsadas dsad asdasad " },
+//     { title: "Random Title, just long enough" },
+//     { title: "Random Title, just long enough" },
+//     { title: "Random Title, just long enough" },
+//     { title: "Random Title, just long enoughasdsadas dsad asdasad " },
+//     { title: "Random Title, just long enough" }
+//   ]
+// };

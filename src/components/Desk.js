@@ -17,24 +17,27 @@ const DeskContainer = styled.div`
   }
 `;
 
-const Desk = ({ boards }) => {
+const Desk = ({ boards, cards }) => {
   return (
     <DeskContainer>
       {boards.map(board => (
-        <Board boardData={board} />
+        <Board
+          boardData={board}
+          workCards={board.cardIds.map(id => cards[id])}
+        />
       ))}
     </DeskContainer>
   );
 };
 
-Desk.defaultProps = {
-  boards: [
-    { title: "Applied" },
-    { title: "Phone Screen" },
-    { title: "Interview" },
-    { title: "Rejected" },
-    { title: "Offer Given" }
-  ]
-};
+// Desk.defaultProps = {
+//   boards: [
+//     { title: "Applied" },
+//     { title: "Phone Screen" },
+//     { title: "Interview" },
+//     { title: "Rejected" },
+//     { title: "Offer Given" }
+//   ]
+// };
 
 export default Desk;
