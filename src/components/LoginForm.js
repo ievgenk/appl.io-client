@@ -9,7 +9,6 @@ const LogForm = styled.form`
   grid-column: 8 / 12;
   font-size: 2.4rem;
   grid-row: 3 / 7;
-  max-height: 40vh;
 
   label {
     padding: 10px;

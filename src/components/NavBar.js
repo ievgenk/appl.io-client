@@ -4,7 +4,7 @@ import styled from "styled-components";
 const MainNav = styled.nav`
   border-bottom: 3px solid black;
   grid-column: 1/-1;
-  font-size: 2.5rem;
+  font-size: ${props => (props.landing ? "2.5rem" : "2rem")};
   padding-left: 20px;
   display: flex;
   align-items: center;

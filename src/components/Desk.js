@@ -4,11 +4,17 @@ import Board from "./Board";
 
 const DeskWrapper = styled.div`
   background-color: #2183ce;
-  height: 100%;
+  max-height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow-x: auto;
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+
+  > * {
+    flex: 0 0 auto;
+    margin-left: 10px;
+  }
 `;
 
 const Desk = ({ boards }) => {
@@ -25,9 +31,9 @@ Desk.defaultProps = {
   boards: [
     { title: "Applied" },
     { title: "Phone Screen" },
-    { title: "Interview" }
-    // { title: "Rejected" },
-    // { title: "Offer Given" }
+    { title: "Interview" },
+    { title: "Rejected" },
+    { title: "Offer Given" }
   ]
 };
 

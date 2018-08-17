@@ -5,10 +5,22 @@ const RegForm = styled.form`
   display: flex;
   flex-direction: column;
   border: 2px black solid;
-  padding: 20px;
+  padding: 50px;
   grid-column: 8 / 12;
   font-size: 2.4rem;
   grid-row: 3 / 7;
+
+  label {
+    padding: 10px;
+  }
+
+  input {
+    padding: 10px;
+  }
+
+  button {
+    margin: 10px;
+  }
 `;
 
 export default class RegisterForm extends Component {
