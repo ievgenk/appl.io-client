@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Board from "./Board";
 
-const DeskWrapper = styled.div`
+const DeskContainer = styled.div`
   background-color: #2183ce;
   max-height: 100%;
   width: 100%;
@@ -19,11 +19,11 @@ const DeskWrapper = styled.div`
 
 const Desk = ({ boards }) => {
   return (
-    <DeskWrapper>
+    <DeskContainer>
       {boards.map(board => (
         <Board boardData={board} />
       ))}
-    </DeskWrapper>
+    </DeskContainer>
   );
 };
 
