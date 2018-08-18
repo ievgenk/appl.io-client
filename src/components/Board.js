@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Card from "./Card";
+import { Droppable } from "react-beautiful-dnd";
 
 const BoardWrapper = styled.div`
   height: 70%;
@@ -24,7 +25,6 @@ const BoardWrapper = styled.div`
 
 const CardList = styled.ul`
   list-style: none;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,15 +34,20 @@ const CardList = styled.ul`
 
 export default class Board extends Component {
   render() {
-    const { title } = this.props.boardData;
+    const { title, id } = this.props.boardData;
     return (
       <BoardWrapper>
         <header>{title}</header>
-        <CardList>
-          {this.props.workCards.map(card => (
-            <Card workData={card} />
-          ))}
-        </CardList>
+        <Droppable droppableId={id}>
+          {provided => (
+            <CardList innerRef={provided.innerRef} {...provided.droppableProps}>
+              {this.props.workCards.map((card, index) => (
+                <Card key={card.id} workData={card} index={index} />
+              ))}
+              {provided.placeholder}
+            </CardList>
+          )}
+        </Droppable>
       </BoardWrapper>
     );
   }
