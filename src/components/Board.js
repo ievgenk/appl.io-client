@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Card from "./Card";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 
 const BoardWrapper = styled.div`
   height: 70%;
@@ -42,7 +42,15 @@ export default class Board extends Component {
           {provided => (
             <CardList innerRef={provided.innerRef} {...provided.droppableProps}>
               {this.props.workCards.map((card, index) => (
-                <Card key={card.id} workData={card} index={index} />
+                <Draggable key={card.id} draggableId={card.id} index={index}>
+                  {provided => (
+                    <Card
+                      innerRef={provided.innerRef}
+                      provided={provided}
+                      workData={card}
+                    />
+                  )}
+                </Draggable>
               ))}
               {provided.placeholder}
             </CardList>
@@ -65,3 +73,4 @@ export default class Board extends Component {
 //     { title: "Random Title, just long enough" }
 //   ]
 // };
+/* <Card key={card.id} workData={card} index={index} /> */

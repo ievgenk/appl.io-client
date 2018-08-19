@@ -67,6 +67,8 @@ export default class Dashboard extends Component {
   onDragEnd = result => {
     const { destination, source, draggableId } = result;
 
+    console.log(result);
+
     if (!destination) {
       return;
     }
@@ -80,7 +82,9 @@ export default class Dashboard extends Component {
 
     const board = this.state.boards[source.droppableId];
     const newCardIds = Array.from(board.cardIds);
+
     newCardIds.splice(source.index, 1);
+
     newCardIds.splice(destination.index, 0, draggableId);
 
     const newBoard = {

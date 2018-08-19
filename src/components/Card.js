@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Draggable } from "react-beautiful-dnd";
 
 const CardItem = styled.li`
   background-color: white;
@@ -15,21 +14,15 @@ const CardItem = styled.li`
 
 export default class Card extends Component {
   render() {
+    const { provided, innerRef } = this.props;
     return (
-      <Draggable
-        draggableId={this.props.workData.id}
-        index={this.props.workData.index}
+      <CardItem
+        {...provided.draggableProps}
+        {...provided.dragHandleProps}
+        innerRef={innerRef}
       >
-        {provided => (
-          <CardItem
-            innerRef={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            <h3>{this.props.workData.title}</h3>
-          </CardItem>
-        )}
-      </Draggable>
+        <h3>{this.props.workData.title}</h3>
+      </CardItem>
     );
   }
 }
