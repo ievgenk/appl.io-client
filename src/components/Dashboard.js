@@ -10,7 +10,7 @@ const DashboardGrid = styled.div`
   grid-template-columns: repeat(12, 1fr);
   height: 100vh;
   width: 100vw;
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-rows: repeat(10, minmax(min-content, 2000px));
 `;
 
 export default class Dashboard extends Component {
@@ -25,6 +25,11 @@ export default class Dashboard extends Component {
         id: "board-2",
         title: "Offer Received",
         cardIds: ["card-5", "card-6", "card-7", "card-8"]
+      },
+      "board-3": {
+        id: "board-3",
+        title: "Phone Screen",
+        cardIds: ["card-9", "card-10", "card-11", "card-12"]
       }
     },
     cards: {
@@ -59,9 +64,25 @@ export default class Dashboard extends Component {
       "card-8": {
         id: "card-8",
         title: "test-8"
+      },
+      "card-9": {
+        id: "card-9",
+        title: "test-9"
+      },
+      "card-10": {
+        id: "card-10",
+        title: "test-10"
+      },
+      "card-11": {
+        id: "card-11",
+        title: "test-11"
+      },
+      "card-12": {
+        id: "card-12",
+        title: "test-12"
       }
     },
-    boardOrder: ["board-1", "board-2"]
+    boardOrder: ["board-1", "board-2", "board-3"]
   };
 
   onDragEnd = result => {

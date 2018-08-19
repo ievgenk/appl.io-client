@@ -8,6 +8,10 @@ const MainNav = styled.nav`
   padding-left: 20px;
   display: flex;
   align-items: center;
+
+  h1 {
+    margin: 0;
+  }
 `;
 
 export default () => {

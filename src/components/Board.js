@@ -4,7 +4,7 @@ import Card from "./Card";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 
 const BoardWrapper = styled.div`
-  height: 70%;
+  /* height: 70%; */
   min-width: 25%;
   background-color: lightgray;
   margin: 20px;
@@ -14,6 +14,7 @@ const BoardWrapper = styled.div`
   color: black;
   margin-top: 55px;
   border-radius: 5px;
+  height: auto;
 
   header {
     margin-left: 2rem;
@@ -30,7 +31,7 @@ const CardList = styled.ul`
   justify-content: center;
   align-items: center;
   padding: 0;
-  min-height: 100px;
+  min-height: 150px;
 `;
 
 export default class Board extends Component {
