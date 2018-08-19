@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import NavBar from "./NavBar";
 import Desk from "./Desk";
@@ -66,8 +66,6 @@ export default class Dashboard extends Component {
 
   onDragEnd = result => {
     const { destination, source, draggableId } = result;
-
-    console.log(result);
 
     if (!destination) {
       return;

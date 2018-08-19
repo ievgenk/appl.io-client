@@ -43,11 +43,12 @@ export default class Board extends Component {
             <CardList innerRef={provided.innerRef} {...provided.droppableProps}>
               {this.props.workCards.map((card, index) => (
                 <Draggable key={card.id} draggableId={card.id} index={index}>
-                  {provided => (
+                  {(provided, snapshot) => (
                     <Card
                       innerRef={provided.innerRef}
                       provided={provided}
                       workData={card}
+                      snapshot={snapshot}
                     />
                   )}
                 </Draggable>

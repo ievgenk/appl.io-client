@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const CardItem = styled.li`
-  background-color: white;
+  background-color: ${props => (props.isDragging ? "lightgreen" : "white")};
   text-align: center;
   padding: 5px 20px;
   font-size: 1.5rem;
@@ -20,6 +20,7 @@ export default class Card extends Component {
         {...provided.draggableProps}
         {...provided.dragHandleProps}
         innerRef={innerRef}
+        isDragging={this.props.snapshot.isDragging}
       >
         <h3>{this.props.workData.title}</h3>
       </CardItem>
