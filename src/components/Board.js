@@ -30,6 +30,7 @@ const CardList = styled.ul`
   justify-content: center;
   align-items: center;
   padding: 0;
+  min-height: 100px;
 `;
 
 export default class Board extends Component {

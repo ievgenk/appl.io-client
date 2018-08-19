@@ -78,23 +78,54 @@ export default class Dashboard extends Component {
       return;
     }
 
-    const board = this.state.boards[source.droppableId];
-    const newCardIds = Array.from(board.cardIds);
+    const start = this.state.boards[source.droppableId];
+    const finish = this.state.boards[destination.droppableId];
 
-    newCardIds.splice(source.index, 1);
+    if (start === finish) {
+      const newCardIds = Array.from(start.cardIds);
 
-    newCardIds.splice(destination.index, 0, draggableId);
+      newCardIds.splice(source.index, 1);
 
-    const newBoard = {
-      ...board,
-      cardIds: newCardIds
+      newCardIds.splice(destination.index, 0, draggableId);
+
+      const newBoard = {
+        ...start,
+        cardIds: newCardIds
+      };
+
+      this.setState(state => ({
+        ...state,
+        boards: {
+          ...state.boards,
+          [newBoard.id]: newBoard
+        }
+      }));
+      return;
+    }
+
+    /// Moving from one board to another
+
+    const startCardIds = Array.from(start.cardIds);
+    startCardIds.splice(source.index, 1);
+
+    const newStart = {
+      ...start,
+      cardIds: startCardIds
+    };
+
+    const finishedCardIds = Array.from(finish.cardIds);
+    finishedCardIds.splice(destination.index, 0, draggableId);
+    const newFinish = {
+      ...finish,
+      cardIds: finishedCardIds
     };
 
     this.setState(state => ({
       ...state,
       boards: {
         ...state.boards,
-        [newBoard.id]: newBoard
+        [newStart.id]: newStart,
+        [newFinish.id]: newFinish
       }
     }));
   };
