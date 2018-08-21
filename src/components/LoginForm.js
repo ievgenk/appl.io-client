@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import * as Yup from "yup";
+import { Formik, Field, Form } from "formik";
 
-const LogForm = styled.form`
+const LogForm = styled(Form)`
   display: flex;
   flex-direction: column;
   border: 2px black solid;
@@ -9,6 +11,7 @@ const LogForm = styled.form`
   grid-column: 8 / 12;
   font-size: 2.4rem;
   grid-row: 3 / 7;
+  min-height: fit-content;
 
   label {
     padding: 10px;
@@ -24,49 +27,50 @@ const LogForm = styled.form`
 `;
 
 export default class LoginForm extends Component {
-  state = {
-    email: "",
-    password: ""
-  };
-
-  handleEmailChange = event => {
-    let email = event.target.value;
-    this.setState(() => ({
-      email
-    }));
-  };
-
-  handlePasswordChange = event => {
-    let password = event.target.value;
-    this.setState(() => ({
-      password
-    }));
-  };
-
   render() {
     return (
-      <LogForm>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter Your Email"
-          value={this.state.email}
-          onChange={this.handleEmailChange}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Enter Your Password"
-          value={this.state.password}
-          onChange={this.handlePasswordChange}
-        />
-        <button type="submit">Login</button>
-        <p>Don't have an account? Register now!</p>
-      </LogForm>
+      <Formik
+        initialValues={{
+          email: "",
+          password: ""
+        }}
+        onSubmit={values => {
+          console.log(values);
+        }}
+        validationSchema={Yup.object().shape({
+          email: Yup.string()
+            .trim()
+            .email()
+            .required(),
+          password: Yup.string()
+            .min(6)
+            .required()
+        })}
+        render={({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting
+        }) => (
+          <LogForm>
+            {touched.email && errors.email && <h3>{errors.email}</h3>}
+            <label htmlFor="email">Email</label>
+            <Field type="email" name="email" placeholder="Enter Your Email" />
+            {touched.password && errors.password && <h3>{errors.password}</h3>}
+            <label htmlFor="password">Password</label>
+            <Field
+              type="password"
+              name="password"
+              placeholder="Enter Your Password"
+            />
+            <button type="submit">Login</button>
+            <p>Don't have an account? Register now!</p>
+          </LogForm>
+        )}
+      />
     );
   }
 }

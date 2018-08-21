@@ -54,10 +54,6 @@ const CancelButton = styled.div`
   position: relative;
   top: -25px;
   left: 200px;
-
-  a {
-    text-decoration: none !important;
-  }
 `;
 
 export default class AddCardForm extends Component {

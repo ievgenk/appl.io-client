@@ -29,6 +29,7 @@ const NavBtn = styled.button`
   background-color: white;
   margin: 0 10px;
   cursor: pointer;
+  font-size: 3rem;
 
   a {
     color: black;

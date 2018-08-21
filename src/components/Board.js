@@ -18,7 +18,7 @@ const BoardWrapper = styled.div`
 
   header {
     margin-left: 2rem;
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: bolder;
     padding: 10px;
   }
