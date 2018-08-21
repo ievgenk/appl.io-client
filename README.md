@@ -1,1 +1,1 @@
-## Currenyly working on the client of Job Application app 🔥🔥🔥
+## Currently working on the client of a Job Application app 🔥🔥🔥
