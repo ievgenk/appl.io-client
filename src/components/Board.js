@@ -63,17 +63,3 @@ export default class Board extends Component {
     );
   }
 }
-
-// Board.defaultProps = {
-//   workcards: [
-//     { title: "Random Title, just long enough" },
-//     { title: "Random Title, just long enough" },
-//     { title: "Random Title, just long enoughasdsadas dsad asdasad " },
-//     { title: "Random Title, just long enough" },
-//     { title: "Random Title, just long enough" },
-//     { title: "Random Title, just long enough" },
-//     { title: "Random Title, just long enoughasdsadas dsad asdasad " },
-//     { title: "Random Title, just long enough" }
-//   ]
-// };
-/* <Card key={card.id} workData={card} index={index} /> */

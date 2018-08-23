@@ -30,15 +30,4 @@ const Desk = ({ boards, cards }) => {
     </DeskContainer>
   );
 };
-
-// Desk.defaultProps = {
-//   boards: [
-//     { title: "Applied" },
-//     { title: "Phone Screen" },
-//     { title: "Interview" },
-//     { title: "Rejected" },
-//     { title: "Offer Given" }
-//   ]
-// };
-
 export default Desk;

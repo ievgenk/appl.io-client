@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AddCardForm from "./AddCardForm";
+import { connect } from "react-redux";
+import { moveCardWithinBoard } from "../actions/boardActions";
 
 const DashboardGrid = styled.div`
   display: grid;
@@ -15,78 +17,7 @@ const DashboardGrid = styled.div`
   grid-template-rows: repeat(10, minmax(min-content, 2000px));
 `;
 
-export default class Dashboard extends Component {
-  state = {
-    boards: {
-      "board-1": {
-        id: "board-1",
-        title: "Applied",
-        cardIds: ["card-1", "card-2", "card-3", "card-4"]
-      },
-      "board-2": {
-        id: "board-2",
-        title: "Offer Received",
-        cardIds: ["card-5", "card-6", "card-7", "card-8"]
-      },
-      "board-3": {
-        id: "board-3",
-        title: "Phone Screen",
-        cardIds: ["card-9", "card-10", "card-11", "card-12"]
-      }
-    },
-    cards: {
-      "card-1": {
-        id: "card-1",
-        title: "test-1"
-      },
-      "card-2": {
-        id: "card-2",
-        title: "test-2"
-      },
-      "card-3": {
-        id: "card-3",
-        title: "test-3"
-      },
-      "card-4": {
-        id: "card-4",
-        title: "test-4"
-      },
-      "card-5": {
-        id: "card-5",
-        title: "test-5"
-      },
-      "card-6": {
-        id: "card-6",
-        title: "test-6"
-      },
-      "card-7": {
-        id: "card-7",
-        title: "test-7"
-      },
-      "card-8": {
-        id: "card-8",
-        title: "test-8"
-      },
-      "card-9": {
-        id: "card-9",
-        title: "test-9"
-      },
-      "card-10": {
-        id: "card-10",
-        title: "test-10"
-      },
-      "card-11": {
-        id: "card-11",
-        title: "test-11"
-      },
-      "card-12": {
-        id: "card-12",
-        title: "test-12"
-      }
-    },
-    boardOrder: ["board-1", "board-2", "board-3"]
-  };
-
+class Dashboard extends Component {
   onDragEnd = result => {
     const { destination, source, draggableId } = result;
 
@@ -101,8 +32,9 @@ export default class Dashboard extends Component {
       return;
     }
 
-    const start = this.state.boards[source.droppableId];
-    const finish = this.state.boards[destination.droppableId];
+    const start = this.props.boards.boards[source.droppableId];
+    console.log(this.props.boards.boards);
+    const finish = this.props.boards.boards[destination.droppableId];
 
     if (start === finish) {
       const newCardIds = Array.from(start.cardIds);
@@ -116,13 +48,15 @@ export default class Dashboard extends Component {
         cardIds: newCardIds
       };
 
-      this.setState(state => ({
-        ...state,
-        boards: {
-          ...state.boards,
-          [newBoard.id]: newBoard
-        }
-      }));
+      // this.setState(state => ({
+      //   ...state,
+      //   boards: {
+      //     ...state.boards,
+      //     [newBoard.id]: newBoard
+      //   }
+      // }));
+
+      this.props.dispatch(moveCardWithinBoard(newBoard));
       return;
     }
 
@@ -160,8 +94,8 @@ export default class Dashboard extends Component {
           <DashboardGrid>
             <NavBar btnPresent={true} />
             <Desk
-              boards={Object.values(this.state.boards)}
-              cards={this.state.cards}
+              boards={Object.values(this.props.boards.boards)}
+              cards={this.props.cards.cards}
             />
             <Route path="/dashboard/add-card" component={AddCardForm} />
           </DashboardGrid>
@@ -176,3 +110,12 @@ export default class Dashboard extends Component {
 Dashboard.defaultProps = {
   isLoggedIn: true
 };
+
+const mapStateToProps = ({ boards, cards }) => {
+  return {
+    boards,
+    cards
+  };
+};
+
+export default connect(mapStateToProps)(Dashboard);
