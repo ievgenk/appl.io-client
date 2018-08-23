@@ -1,22 +1,22 @@
-import { MOVE_CARD_WITHIN } from "../actions/boardActions";
+import { MOVE_CARD_WITHIN, MOVE_CARD_ACROSS } from "../actions/boardActions";
+import { REFRESH_STORE_SUCCESS } from "../actions/globalActions";
+import { ADD_CARD } from "../actions/cardActions";
 
 const initialState = {
-  boards: {
-    "board-1": {
-      id: "board-1",
-      title: "Applied",
-      cardIds: ["card-1", "card-2", "card-3", "card-4"]
-    },
-    "board-2": {
-      id: "board-2",
-      title: "Offer Received",
-      cardIds: ["card-5", "card-6", "card-7", "card-8"]
-    },
-    "board-3": {
-      id: "board-3",
-      title: "Phone Screen",
-      cardIds: ["card-9", "card-10", "card-11", "card-12"]
-    }
+  "board-1": {
+    id: "board-1",
+    title: "Applied",
+    cardIds: []
+  },
+  "board-2": {
+    id: "board-2",
+    title: "Offer Received",
+    cardIds: []
+  },
+  "board-3": {
+    id: "board-3",
+    title: "Phone Screen",
+    cardIds: []
   }
 };
 
@@ -26,9 +26,27 @@ export default (state = initialState, action) => {
     case MOVE_CARD_WITHIN:
       return {
         ...state,
-        boards: {
-          ...state.boards,
-          [action.newBoard.id]: action.newBoard
+        [action.newBoard.id]: action.newBoard
+      };
+    case MOVE_CARD_ACROSS:
+      return {
+        ...state,
+        [action.startBoard.id]: action.startBoard,
+        [action.finishBoard.id]: action.finishBoard
+      };
+
+    case REFRESH_STORE_SUCCESS:
+      return {
+        ...state,
+        ...action.payload.boards
+      };
+
+    case ADD_CARD:
+      return {
+        ...state,
+        ["board-1"]: {
+          ...state["board-1"],
+          cardIds: [...state["board-1"].cardIds, action.card.id]
         }
       };
 

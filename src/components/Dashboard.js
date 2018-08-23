@@ -7,7 +7,10 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AddCardForm from "./AddCardForm";
 import { connect } from "react-redux";
-import { moveCardWithinBoard } from "../actions/boardActions";
+import {
+  moveCardWithinBoard,
+  moveCardToOtherBoard
+} from "../actions/boardActions";
 
 const DashboardGrid = styled.div`
   display: grid;
@@ -32,9 +35,9 @@ class Dashboard extends Component {
       return;
     }
 
-    const start = this.props.boards.boards[source.droppableId];
-    console.log(this.props.boards.boards);
-    const finish = this.props.boards.boards[destination.droppableId];
+    const start = this.props.boards[source.droppableId];
+    console.log(this.props.boards);
+    const finish = this.props.boards[destination.droppableId];
 
     if (start === finish) {
       const newCardIds = Array.from(start.cardIds);
@@ -47,14 +50,6 @@ class Dashboard extends Component {
         ...start,
         cardIds: newCardIds
       };
-
-      // this.setState(state => ({
-      //   ...state,
-      //   boards: {
-      //     ...state.boards,
-      //     [newBoard.id]: newBoard
-      //   }
-      // }));
 
       this.props.dispatch(moveCardWithinBoard(newBoard));
       return;
@@ -77,14 +72,7 @@ class Dashboard extends Component {
       cardIds: finishedCardIds
     };
 
-    this.setState(state => ({
-      ...state,
-      boards: {
-        ...state.boards,
-        [newStart.id]: newStart,
-        [newFinish.id]: newFinish
-      }
-    }));
+    this.props.dispatch(moveCardToOtherBoard(newStart, newFinish));
   };
 
   render() {
@@ -94,8 +82,8 @@ class Dashboard extends Component {
           <DashboardGrid>
             <NavBar btnPresent={true} />
             <Desk
-              boards={Object.values(this.props.boards.boards)}
-              cards={this.props.cards.cards}
+              boards={Object.values(this.props.boards)}
+              cards={this.props.cards}
             />
             <Route path="/dashboard/add-card" component={AddCardForm} />
           </DashboardGrid>

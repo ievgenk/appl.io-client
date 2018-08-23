@@ -22,7 +22,7 @@ export default class Card extends Component {
         innerRef={innerRef}
         isDragging={this.props.snapshot.isDragging}
       >
-        <h3>{this.props.workData.title}</h3>
+        <h3>{this.props.workData.companyName}</h3>
       </CardItem>
     );
   }

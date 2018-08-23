@@ -3,7 +3,10 @@ import styled from "styled-components";
 import { Formik, Field, Form } from "formik";
 import moment from "moment";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { addCard } from "../actions/cardActions";
+import { connect } from "react-redux";
+import uuid from "uuid/v4";
 
 const CardFormContainer = styled.div`
   grid-column: 1 / -1;
@@ -56,9 +59,13 @@ const CancelButton = styled.div`
   left: 200px;
 `;
 
-export default class AddCardForm extends Component {
+class AddCardForm extends Component {
   render() {
     const currentDate = moment().format("D MMMM YYYY");
+    if (this.props.toDashboard) {
+      return <Redirect to="/dashboard" />;
+    }
+
     return (
       <CardFormContainer>
         <Formik
@@ -68,10 +75,11 @@ export default class AddCardForm extends Component {
             contactName: "",
             contactEmail: "",
             contactPhone: "",
-            date: currentDate
+            date: currentDate,
+            id: uuid()
           }}
-          onSubmit={values => {
-            console.log(values);
+          onSubmit={card => {
+            this.props.dispatch(addCard(card));
           }}
           validationSchema={Yup.object().shape({
             companyName: Yup.string()
@@ -140,3 +148,11 @@ export default class AddCardForm extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ toDashboard }) => {
+  return {
+    toDashboard
+  };
+};
+
+export default connect(mapStateToProps)(AddCardForm);
