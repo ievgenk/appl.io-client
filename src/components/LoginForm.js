@@ -23,6 +23,11 @@ const LogForm = styled(Form)`
 
   button {
     margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 `;
 
@@ -66,7 +71,9 @@ export default class LoginForm extends Component {
               name="password"
               placeholder="Enter Your Password"
             />
-            <button type="submit">Login</button>
+            <button type="submit">
+              <span>Login</span>
+            </button>
             <p>Don't have an account? Register now!</p>
           </LogForm>
         )}

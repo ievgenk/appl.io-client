@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 import styledNormalize from "styled-normalize";
 import { injectGlobal } from "styled-components";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 //CSS RESET INSERTION
 
@@ -17,4 +19,9 @@ injectGlobal`
 
   `;
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);

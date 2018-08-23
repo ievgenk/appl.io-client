@@ -16,7 +16,7 @@ const CardFormContainer = styled.div`
 
 const CardForm = styled(Form)`
   background-color: white;
-  height: 50%;
+  min-height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;

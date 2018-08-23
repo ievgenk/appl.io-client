@@ -23,6 +23,11 @@ const RegForm = styled(Form)`
 
   button {
     margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 `;
 
@@ -66,7 +71,9 @@ export default class RegisterForm extends Component {
               name="password"
               placeholder="Enter Your Password"
             />
-            <button type="submit">Login</button>
+            <button type="submit">
+              <span>Login</span>
+            </button>
             <p>Already have an account? Login here!</p>
           </RegForm>
         )}

@@ -7,7 +7,7 @@ const MainNav = styled.nav`
   grid-column: 1/-1;
   grid-row: 1 / 2;
   font-size: ${props => (props.landing ? "2.5rem" : "2rem")};
-  padding-left: 20px;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
