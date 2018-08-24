@@ -12,7 +12,7 @@ const LogForm = styled(Form)`
   font-size: 2.4rem;
   grid-row: 3 / 7;
   min-height: fit-content;
-
+  background-color: white;
   label {
     padding: 10px;
   }

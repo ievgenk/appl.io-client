@@ -11,6 +11,7 @@ const MainNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #fff;
 
   h1 {
     margin: 0;
