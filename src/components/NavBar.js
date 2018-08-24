@@ -16,6 +16,9 @@ const MainNav = styled.nav`
   h1 {
     margin: 0;
   }
+  @media screen and (max-width: 600px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const BtnContainer = styled.div`

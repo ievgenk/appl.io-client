@@ -29,6 +29,13 @@ const LogForm = styled(Form)`
     align-items: center;
     flex-direction: column;
   }
+  @media screen and (max-width: 600px) {
+    padding: 50px;
+    grid-column: 1 / -1;
+    font-size: 2rem;
+    grid-row: span 4;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
 `;
 
 export default class LoginForm extends Component {
