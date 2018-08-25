@@ -1,5 +1,5 @@
 import { REFRESH_STORE_SUCCESS } from "../actions/globalActions";
-import { ADD_CARD } from "../actions/cardActions";
+import { ADD_CARD, UPDATE_CARD_FIELD } from "../actions/cardActions";
 
 export default (
   state = {
@@ -24,6 +24,15 @@ export default (
 
     case REFRESH_STORE_SUCCESS:
       return action.payload.cards;
+
+    case UPDATE_CARD_FIELD:
+      return {
+        ...state,
+        [action.cardId]: {
+          ...state[action.cardId],
+          [action.cardFieldName]: action.cardFieldValue
+        }
+      };
 
     default:
       return state;

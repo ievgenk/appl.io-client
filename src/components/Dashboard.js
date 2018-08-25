@@ -24,9 +24,6 @@ const DashboardGrid = styled.div`
 
 class Dashboard extends Component {
   componentDidUpdate = () => {
-    console.log("did mount");
-    console.log(this.props.toDashboard);
-
     if (this.props.toDashboard === true) {
       this.props.dispatch(resetRedirect());
     }

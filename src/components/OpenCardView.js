@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { redirectToDash } from "../actions/dashboardActions";
-import { resetOpenCard } from "../actions/cardActions";
+import { resetOpenCard, updateCardField } from "../actions/cardActions";
 
 const OpenCardContainer = styled.div`
   grid-column: 1 / -1;
@@ -47,9 +47,19 @@ const CardHeadline = styled.h3`
 const FormInput = styled.input``;
 
 class OpenCardView extends Component {
+  state = {};
+
   handleDashRedirect = () => {
     this.props.dispatch(redirectToDash());
     this.props.dispatch(resetOpenCard());
+  };
+
+  handleChange = event => {
+    const cardFieldValue = event.target.value;
+    const cardFieldName = event.target.name;
+    const cardId = this.props.openCard.id;
+
+    this.props.dispatch(updateCardField(cardFieldName, cardFieldValue, cardId));
   };
 
   render() {
@@ -68,12 +78,37 @@ class OpenCardView extends Component {
       <OpenCardContainer>
         <OpenCardForm>
           <CancelButton onClick={this.handleDashRedirect}>X</CancelButton>
-          <FormInput readOnly value={companyName} />
-          <FormInput contentEditable={true} value={postingURL} />
-          <FormInput readOnly value={contactName} />
-          <FormInput readOnly value={contactEmail} />
-          <FormInput readOnly value={contactPhone} />
-          <FormInput readOnly value={date} />
+          <FormInput
+            name={"companyName"}
+            contentEditable={true}
+            defaultValue={companyName}
+            onChange={this.handleChange}
+          />
+          <FormInput
+            name={"postingURL"}
+            contentEditable={true}
+            defaultValue={postingURL}
+            onChange={this.handleChange}
+          />
+          <FormInput
+            name={"contactName"}
+            contentEditable={true}
+            defaultValue={contactName}
+            onChange={this.handleChange}
+          />
+          <FormInput
+            name={"contactEmail"}
+            contentEditable={true}
+            defaultValue={contactEmail}
+            onChange={this.handleChange}
+          />
+          <FormInput
+            name={"contactPhone"}
+            contentEditable={true}
+            defaultValue={contactPhone}
+            onChange={this.handleChange}
+          />
+          <FormInput name={"date"} contentEditable={true} defaultValue={date} />
         </OpenCardForm>
       </OpenCardContainer>
     );
