@@ -11,6 +11,8 @@ import {
   moveCardWithinBoard,
   moveCardToOtherBoard
 } from "../actions/boardActions";
+import OpenCardView from "./OpenCardView";
+import { resetRedirect } from "../actions/dashboardActions";
 
 const DashboardGrid = styled.div`
   display: grid;
@@ -21,6 +23,15 @@ const DashboardGrid = styled.div`
 `;
 
 class Dashboard extends Component {
+  componentDidUpdate = () => {
+    console.log("did mount");
+    console.log(this.props.toDashboard);
+
+    if (this.props.toDashboard === true) {
+      this.props.dispatch(resetRedirect());
+    }
+  };
+
   onDragEnd = result => {
     const { destination, source, draggableId } = result;
 
@@ -36,7 +47,6 @@ class Dashboard extends Component {
     }
 
     const start = this.props.boards[source.droppableId];
-    console.log(this.props.boards);
     const finish = this.props.boards[destination.droppableId];
 
     if (start === finish) {
@@ -85,7 +95,8 @@ class Dashboard extends Component {
               boards={Object.values(this.props.boards)}
               cards={this.props.cards}
             />
-            <Route path="/dashboard/add-card" component={AddCardForm} />
+            <Route exact path="/dashboard/add-card" component={AddCardForm} />
+            <Route exact path="/dashboard/card/:id" component={OpenCardView} />
           </DashboardGrid>
         </Router>
       </DragDropContext>
@@ -99,10 +110,11 @@ Dashboard.defaultProps = {
   isLoggedIn: true
 };
 
-const mapStateToProps = ({ boards, cards }) => {
+const mapStateToProps = ({ boards, cards, toDashboard }) => {
   return {
     boards,
-    cards
+    cards,
+    toDashboard
   };
 };
 

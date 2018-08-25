@@ -34,6 +34,16 @@ const LandingMessage = styled.span`
     font-size: 5.5rem;
     line-height: 1.4;
   }
+
+  @media screen and (max-width: 1920px) {
+    grid-column: 2 / 5;
+    grid-row: 3 / 6;
+
+    h1 {
+      font-size: 4rem;
+    }
+  }
+
   @media screen and (max-width: 600px) {
     grid-column: 1 / -1;
     grid-row: 2 / 5;

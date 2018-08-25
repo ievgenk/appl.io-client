@@ -68,10 +68,10 @@ export default class LoginForm extends Component {
           isSubmitting
         }) => (
           <LogForm>
-            {touched.email && errors.email && <h3>{errors.email}</h3>}
+            {touched.email && errors.email && <p>{errors.email}</p>}
             <label htmlFor="email">Email</label>
             <Field type="email" name="email" placeholder="Enter Your Email" />
-            {touched.password && errors.password && <h3>{errors.password}</h3>}
+            {touched.password && errors.password && <p>{errors.password}</p>}
             <label htmlFor="password">Password</label>
             <Field
               type="password"

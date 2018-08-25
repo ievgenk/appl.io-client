@@ -2,6 +2,14 @@ import { refreshStore } from "./globalActions";
 import { redirectToDash } from "./dashboardActions";
 
 export const ADD_CARD = "ADD_CARD";
+export const OPEN_CARD = "OPEN_CARD";
+export const RESET_OPEN_CARD = "RESET_OPEN_CARD";
+
+export const resetOpenCard = () => {
+  return {
+    type: RESET_OPEN_CARD
+  };
+};
 
 export const addCard = card => (dispatch, getState) => {
   // Adding card to store
@@ -29,4 +37,11 @@ export const addCard = card => (dispatch, getState) => {
     dispatch(refreshStore());
     dispatch(redirectToDash());
   });
+};
+
+export const openCardAction = card => {
+  return {
+    type: OPEN_CARD,
+    card
+  };
 };
