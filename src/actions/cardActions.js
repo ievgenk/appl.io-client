@@ -2,9 +2,17 @@ import { refreshStore } from "./globalActions";
 import { redirectToDash } from "./dashboardActions";
 
 export const UPDATE_CARD_FIELD = "UPDATE_CARD";
+export const DELETE_CARD = "DELETE_CARD";
 export const ADD_CARD = "ADD_CARD";
 export const OPEN_CARD = "OPEN_CARD";
 export const RESET_OPEN_CARD = "RESET_OPEN_CARD";
+
+export const deleteCard = cardToDelete => {
+  return {
+    type: DELETE_CARD,
+    cardToDelete
+  };
+};
 
 export const updateCardField = (cardField, newValue, id) => {
   return {

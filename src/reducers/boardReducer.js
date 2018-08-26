@@ -6,7 +6,7 @@ const initialState = {
   "board-1": {
     id: "board-1",
     title: "Applied",
-    cardIds: ["bf1050b6-0a2a-4fe0-8877-599412e593c0"]
+    cardIds: []
   },
   "board-2": {
     id: "board-2",

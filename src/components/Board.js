@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Card from "./Card";
 import { Droppable, Draggable } from "react-beautiful-dnd";
+import { connect } from "react-redux";
 
 const BoardWrapper = styled.div`
   /* height: 70%; */
@@ -34,7 +35,7 @@ const CardList = styled.ul`
   min-height: 150px;
 `;
 
-export default class Board extends Component {
+class Board extends Component {
   render() {
     const { title, id } = this.props.boardData;
     return (
@@ -63,3 +64,11 @@ export default class Board extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ cards }) => {
+  return {
+    cards
+  };
+};
+
+export default connect(mapStateToProps)(Board);

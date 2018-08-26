@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { redirectToDash } from "../actions/dashboardActions";
-import { resetOpenCard, updateCardField } from "../actions/cardActions";
+import {
+  resetOpenCard,
+  updateCardField,
+  deleteCard
+} from "../actions/cardActions";
 
 const OpenCardContainer = styled.div`
   grid-column: 1 / -1;
@@ -44,6 +48,8 @@ const CardHeadline = styled.h3`
   margin: 0;
 `;
 
+const DeleteBtn = styled.button``;
+
 const FormInput = styled.input``;
 
 class OpenCardView extends Component {
@@ -52,6 +58,10 @@ class OpenCardView extends Component {
   handleDashRedirect = () => {
     this.props.dispatch(redirectToDash());
     this.props.dispatch(resetOpenCard());
+  };
+
+  handleDelete = () => {
+    this.props.dispatch(deleteCard);
   };
 
   handleChange = event => {
@@ -109,6 +119,7 @@ class OpenCardView extends Component {
             onChange={this.handleChange}
           />
           <FormInput name={"date"} contentEditable={true} defaultValue={date} />
+          <DeleteBtn>Delete Card</DeleteBtn>
         </OpenCardForm>
       </OpenCardContainer>
     );
