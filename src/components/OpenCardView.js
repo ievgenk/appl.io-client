@@ -52,6 +52,15 @@ const DeleteBtn = styled.button``;
 
 const FormInput = styled.input``;
 
+const CardFormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 70%;
+  background-color: white;
+`;
+
 class OpenCardView extends Component {
   state = {};
 
@@ -61,7 +70,8 @@ class OpenCardView extends Component {
   };
 
   handleDelete = () => {
-    this.props.dispatch(deleteCard);
+    this.props.dispatch(deleteCard(this.props.openCard.id));
+    this.handleDashRedirect();
   };
 
   handleChange = event => {
@@ -86,41 +96,46 @@ class OpenCardView extends Component {
     }
     return (
       <OpenCardContainer>
-        <OpenCardForm>
-          <CancelButton onClick={this.handleDashRedirect}>X</CancelButton>
-          <FormInput
-            name={"companyName"}
-            contentEditable={true}
-            defaultValue={companyName}
-            onChange={this.handleChange}
-          />
-          <FormInput
-            name={"postingURL"}
-            contentEditable={true}
-            defaultValue={postingURL}
-            onChange={this.handleChange}
-          />
-          <FormInput
-            name={"contactName"}
-            contentEditable={true}
-            defaultValue={contactName}
-            onChange={this.handleChange}
-          />
-          <FormInput
-            name={"contactEmail"}
-            contentEditable={true}
-            defaultValue={contactEmail}
-            onChange={this.handleChange}
-          />
-          <FormInput
-            name={"contactPhone"}
-            contentEditable={true}
-            defaultValue={contactPhone}
-            onChange={this.handleChange}
-          />
-          <FormInput name={"date"} contentEditable={true} defaultValue={date} />
-          <DeleteBtn>Delete Card</DeleteBtn>
-        </OpenCardForm>
+        <CardFormContainer>
+          <OpenCardForm>
+            <CancelButton onClick={this.handleDashRedirect}>X</CancelButton>
+            <FormInput
+              name={"companyName"}
+              contentEditable={true}
+              defaultValue={companyName}
+              onChange={this.handleChange}
+            />
+            <FormInput
+              name={"postingURL"}
+              contentEditable={true}
+              defaultValue={postingURL}
+              onChange={this.handleChange}
+            />
+            <FormInput
+              name={"contactName"}
+              contentEditable={true}
+              defaultValue={contactName}
+              onChange={this.handleChange}
+            />
+            <FormInput
+              name={"contactEmail"}
+              contentEditable={true}
+              defaultValue={contactEmail}
+              onChange={this.handleChange}
+            />
+            <FormInput
+              name={"contactPhone"}
+              contentEditable={true}
+              defaultValue={contactPhone}
+              onChange={this.handleChange}
+            />
+            <FormInput
+              name={"date"}
+              contentEditable={true}
+              defaultValue={date}
+            />
+          </OpenCardForm>
+        </CardFormContainer>
       </OpenCardContainer>
     );
   }

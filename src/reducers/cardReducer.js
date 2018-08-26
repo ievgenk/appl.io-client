@@ -38,7 +38,11 @@ export default (
       };
 
     case DELETE_CARD:
-      return state.filter(card => card !== action.cardToDelete);
+      const newState = {
+        ...state
+      };
+      delete newState[action.cardToDelete];
+      return newState;
 
     default:
       return state;
