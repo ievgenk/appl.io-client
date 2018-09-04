@@ -42,9 +42,9 @@ class RegisterForm extends Component {
           email: "",
           password: ""
         }}
-        onSubmit={values => {
-          this.props.dispatch(registerNewUser());
-          console.log(values);
+        onSubmit={newUser => {
+          this.props.dispatch(registerNewUser(newUser));
+          console.log(newUser);
         }}
         validationSchema={Yup.object().shape({
           email: Yup.string()
