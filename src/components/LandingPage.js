@@ -4,6 +4,8 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LandingGrid = styled.div`
   display: grid;
@@ -78,6 +80,7 @@ export default class LandingPage extends Component {
               <br /> 👌 With Ease!
             </h1>
           </LandingMessage>
+          <ToastContainer autoClose={2000} />
         </LandingGrid>
       </Router>
     ) : (

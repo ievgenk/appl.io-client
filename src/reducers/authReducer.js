@@ -3,6 +3,8 @@ import {
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR
 } from "../actions/authActions";
+import { toast } from "react-toastify";
+import { css } from "glamor";
 
 const initialState = {
   loading: false,
@@ -13,7 +15,7 @@ const initialState = {
   },
   register: {
     success: false,
-    message: "",
+    message: null,
     error: null
   }
 };
@@ -26,6 +28,11 @@ export default (state = initialState, action) => {
         loading: true
       };
     case REGISTER_USER_SUCCESS:
+      toast(`${action.message} 👍`, {
+        bodyClassName: css({
+          fontSize: "40px"
+        })
+      });
       return {
         ...state,
         loading: false,
@@ -37,6 +44,11 @@ export default (state = initialState, action) => {
       };
 
     case REGISTER_USER_ERROR:
+      toast.error(`${action.message}`, {
+        bodyClassName: css({
+          fontSize: "40px"
+        })
+      });
       return {
         ...state,
         loading: false,
