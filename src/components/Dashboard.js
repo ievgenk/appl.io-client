@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 import Desk from "./Desk";
 import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import AddCardForm from "./AddCardForm";
 import { connect } from "react-redux";
 import {
@@ -85,17 +85,15 @@ class Dashboard extends Component {
   render() {
     return this.props.isLoggedIn ? (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <Router>
-          <DashboardGrid>
-            <NavBar btnPresent={true} />
-            <Desk
-              boards={Object.values(this.props.boards)}
-              cards={this.props.cards}
-            />
-            <Route exact path="/dashboard/add-card" component={AddCardForm} />
-            <Route exact path="/dashboard/card/:id" component={OpenCardView} />
-          </DashboardGrid>
-        </Router>
+        <DashboardGrid>
+          <NavBar btnPresent={true} />
+          <Desk
+            boards={Object.values(this.props.boards)}
+            cards={this.props.cards}
+          />
+          <Route exact path="/dashboard/add-card" component={AddCardForm} />
+          <Route exact path="/dashboard/card/:id" component={OpenCardView} />
+        </DashboardGrid>
       </DragDropContext>
     ) : (
       <Redirect to="/" />

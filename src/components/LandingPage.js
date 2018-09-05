@@ -3,10 +3,9 @@ import NavBar from "./NavBar";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import styled from "styled-components";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { connect } from "react-redux";
 
 const LandingGrid = styled.div`
   display: grid;
@@ -70,8 +69,10 @@ export default class LandingPage extends Component {
     return !this.props.isLoggedIn ? (
       <LandingGrid>
         <NavBar />
-        <Route exact path="/" component={LoginForm} />
-        <Route exact path="/register" component={RegisterForm} />
+        <Switch>
+          <Route exact path="/" component={LoginForm} />
+          <Route exact path="/register" component={RegisterForm} />
+        </Switch>
 
         <LandingMessage>
           <h1>
@@ -91,10 +92,4 @@ export default class LandingPage extends Component {
 
 LandingPage.defaultProps = {
   isLoggedIn: false
-};
-
-const mapStateToProps = state => {
-  return {
-    registerSuccess: state.auth.register.success
-  };
 };

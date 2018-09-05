@@ -6,7 +6,7 @@ import { injectGlobal } from "styled-components";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { ConnectedRouter } from "connected-react-router";
-import { createBrowserHistory } from "history";
+import { history } from "./store";
 
 //CSS RESET INSERTION
 
@@ -21,8 +21,6 @@ injectGlobal`
   }
 
   `;
-
-const history = createBrowserHistory();
 
 ReactDOM.render(
   <Provider store={store}>
