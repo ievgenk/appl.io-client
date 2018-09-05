@@ -1,7 +1,10 @@
 import {
   REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS,
-  REGISTER_USER_ERROR
+  REGISTER_USER_ERROR,
+  LOGIN_USER_REQUEST,
+  LOGIN_USER_SUCCESS,
+  LOGIN_USER_ERROR
 } from "../actions/authActions";
 import { toast } from "react-toastify";
 import { css } from "glamor";
@@ -9,9 +12,8 @@ import { css } from "glamor";
 const initialState = {
   loading: false,
   login: {
-    loggedIn: false,
-    error: null,
-    success: false
+    loggedIn: true,
+    error: null
   },
   register: {
     success: false,
@@ -22,6 +24,37 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOGIN_USER_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+
+    case LOGIN_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        login: {
+          loggedIn: true,
+          error: null
+        }
+      };
+
+    case LOGIN_USER_ERROR:
+      toast.error(`${action.errorMessage}`, {
+        bodyClassName: css({
+          fontSize: "40px"
+        })
+      });
+      return {
+        ...state,
+        loading: false,
+        login: {
+          ...state.login,
+          error: action.errorMessage
+        }
+      };
+
     case REGISTER_USER_REQUEST:
       return {
         ...state,

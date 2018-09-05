@@ -62,7 +62,8 @@ class RegisterForm extends Component {
           handleChange,
           handleBlur,
           handleSubmit,
-          isSubmitting
+          isSubmitting,
+          resetForm
         }) => (
           <RegForm>
             {touched.email && errors.email && <h3>{errors.email}</h3>}

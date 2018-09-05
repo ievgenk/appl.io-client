@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
 import { Formik, Field, Form } from "formik";
+import { loginUser } from "../actions/authActions";
+import { connect } from "react-redux";
 
 const LogForm = styled(Form)`
   display: flex;
@@ -38,7 +40,7 @@ const LogForm = styled(Form)`
   }
 `;
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   render() {
     return (
       <Formik
@@ -46,8 +48,11 @@ export default class LoginForm extends Component {
           email: "",
           password: ""
         }}
-        onSubmit={values => {
-          console.log(values);
+        onSubmit={user => {
+          console.log(user.email, user.password);
+          this.props.dispatch(
+            loginUser(user.email.trim(), user.password.trim())
+          );
         }}
         validationSchema={Yup.object().shape({
           email: Yup.string()
@@ -88,3 +93,5 @@ export default class LoginForm extends Component {
     );
   }
 }
+
+export default connect()(LoginForm);

@@ -66,7 +66,7 @@ const LandingMessage = styled.span`
 
 export default class LandingPage extends Component {
   render() {
-    return !this.props.isLoggedIn ? (
+    return (
       <LandingGrid>
         <NavBar />
         <Switch>
@@ -84,12 +84,6 @@ export default class LandingPage extends Component {
         </LandingMessage>
         <ToastContainer autoClose={2000} />
       </LandingGrid>
-    ) : (
-      <Redirect to="/dashboard" />
     );
   }
 }
-
-LandingPage.defaultProps = {
-  isLoggedIn: false
-};
