@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "connected-react-router": "^4.4.1",
     "formik": "^1.0.3",
     "glamor": "^2.20.40",
     "moment": "^2.22.2",

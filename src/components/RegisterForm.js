@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Formik, Field, Form } from "formik";
 import { registerNewUser } from "../actions/authActions";
 import { connect } from "react-redux";
+import { resetOpenCard } from "../actions/cardActions";
 
 const RegForm = styled(Form)`
   display: flex;
@@ -44,7 +45,8 @@ class RegisterForm extends Component {
         }}
         onSubmit={newUser => {
           this.props.dispatch(registerNewUser(newUser));
-          console.log(newUser);
+          newUser.email = "";
+          newUser.password = "";
         }}
         validationSchema={Yup.object().shape({
           email: Yup.string()

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { SERVER_API_ADDRESS } from "../config/configValues";
+import { push } from "connected-react-router";
 
 export const REGISTER_USER_REQUEST = "REGISTER_USER_REQUEST";
 export const REGISTER_USER_SUCCESS = "REGISTER_USER_SUCCESS";
@@ -30,6 +31,7 @@ export const registerNewUser = ({ email, password }) => dispatch => {
     .post(`${SERVER_API_ADDRESS}/users/signup`, { email, password })
     .then(result => {
       dispatch(sucessfullUserRegistration(result.data.message));
+      dispatch(push("/"));
     })
     .catch(err => {
       if (err) {

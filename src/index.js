@@ -5,6 +5,8 @@ import styledNormalize from "styled-normalize";
 import { injectGlobal } from "styled-components";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { ConnectedRouter } from "connected-react-router";
+import { createBrowserHistory } from "history";
 
 //CSS RESET INSERTION
 
@@ -20,9 +22,13 @@ injectGlobal`
 
   `;
 
+const history = createBrowserHistory();
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById("root")
 );
