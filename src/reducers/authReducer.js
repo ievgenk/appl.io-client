@@ -12,7 +12,7 @@ import { css } from "glamor";
 const initialState = {
   loading: false,
   login: {
-    loggedIn: true,
+    loggedIn: false,
     error: null
   },
   register: {

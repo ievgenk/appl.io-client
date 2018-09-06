@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const MainNav = styled.nav`
   border-bottom: 3px solid black;
@@ -41,20 +42,30 @@ const NavBtn = styled.button`
   }
 `;
 
-export default ({ btnPresent }) => {
-  return (
-    <MainNav>
-      <h1>Appl.io</h1>
-      {btnPresent === true && (
-        <BtnContainer>
-          <NavBtn>
-            <Link to="/dashboard/add-card">Add A Card</Link>
-          </NavBtn>
-          <NavBtn>
-            <Link to="#">Log Out</Link>
-          </NavBtn>
-        </BtnContainer>
-      )}
-    </MainNav>
-  );
-};
+class NavBar extends Component {
+  handleLogOut = () => {
+    console.log("clicked");
+  };
+
+  render() {
+    return (
+      <MainNav>
+        <h1>Appl.io</h1>
+        {this.props.btnPresent === true && (
+          <BtnContainer>
+            <NavBtn>
+              <Link to="/dashboard/add-card">Add A Card</Link>
+            </NavBtn>
+            <NavBtn>
+              <Link to="#" onClick={this.handleLogOut}>
+                Log Out
+              </Link>
+            </NavBtn>
+          </BtnContainer>
+        )}
+      </MainNav>
+    );
+  }
+}
+
+export default connect()(NavBar);
