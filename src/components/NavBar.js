@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { logoutUser } from "../actions/authActions";
 
 const MainNav = styled.nav`
   border-bottom: 3px solid black;
@@ -44,7 +45,7 @@ const NavBtn = styled.button`
 
 class NavBar extends Component {
   handleLogOut = () => {
-    console.log("clicked");
+    this.props.dispatch(logoutUser());
   };
 
   render() {

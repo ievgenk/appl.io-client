@@ -49,7 +49,6 @@ class LoginForm extends Component {
           password: ""
         }}
         onSubmit={user => {
-          console.log(user.email, user.password);
           this.props.dispatch(
             loginUser(user.email.trim(), user.password.trim())
           );

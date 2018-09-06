@@ -8,6 +8,13 @@ export const REGISTER_USER_ERROR = "REGISTER_USER_ERROR";
 export const LOGIN_USER_REQUEST = "LOGIN_USER_REQUEST";
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_USER_ERROR = "LOGIN_USER_ERROR";
+export const LOGOUT_USER = "LOGOUT_USER";
+
+export const logoutUser = () => {
+  return {
+    type: LOGOUT_USER
+  };
+};
 
 export const dispatchLoginRequest = () => {
   return {
@@ -15,9 +22,11 @@ export const dispatchLoginRequest = () => {
   };
 };
 
-export const successfullUserLogin = () => {
+export const successfullUserLogin = (userId, token) => {
   return {
-    type: LOGIN_USER_SUCCESS
+    type: LOGIN_USER_SUCCESS,
+    userId,
+    token
   };
 };
 
@@ -38,13 +47,7 @@ export const loginUser = (email, password) => dispatch => {
     .post(`${SERVER_API_ADDRESS}/users/login`, { email, password })
     .then(user => {
       //Saving JWT auth token to local storage
-      localStorage.setItem("token", user.data.token);
-      localStorage.setItem("userId", user.data.user);
-      dispatch(successfullUserLogin());
-      console.log(user);
-      if (user.status === 200) {
-        localStorage.setItem("isLoggedIn", true);
-      }
+      dispatch(successfullUserLogin(user.data.user, user.data.token));
       dispatch(push("/dashboard"));
     })
     .catch(error => {
