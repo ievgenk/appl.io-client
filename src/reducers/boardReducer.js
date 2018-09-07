@@ -36,8 +36,8 @@ export default (state = initialState, action) => {
 
     case REFRESH_STORE_SUCCESS:
       return {
-        ...state,
-        ...action.payload.boards
+        ...state
+        // ...action.payload.boards
       };
 
     case ADD_CARD:

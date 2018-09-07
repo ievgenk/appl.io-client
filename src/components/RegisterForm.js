@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { Formik, Field, Form } from "formik";
 import { registerNewUser } from "../actions/authActions";
 import { connect } from "react-redux";
-import { resetOpenCard } from "../actions/cardActions";
+import { Link } from "react-router-dom";
 
 const RegForm = styled(Form)`
   display: flex;
@@ -79,7 +79,10 @@ class RegisterForm extends Component {
             <button type="submit">
               <span>Register</span>
             </button>
-            <p>Already have an account? Login here!</p>
+            <p>
+              Already have an account?
+              <Link to="/">Login here!</Link>
+            </p>
           </RegForm>
         )}
       />

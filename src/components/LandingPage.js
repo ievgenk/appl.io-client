@@ -70,8 +70,8 @@ export default class LandingPage extends Component {
       <LandingGrid>
         <NavBar />
         <Switch>
-          <Route exact path="/" component={LoginForm} />
           <Route exact path="/register" component={RegisterForm} />
+          <Route exact path="/" component={LoginForm} />
         </Switch>
 
         <LandingMessage>

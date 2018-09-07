@@ -11,6 +11,7 @@ import {
   moveCardWithinBoard,
   moveCardToOtherBoard
 } from "../actions/boardActions";
+import { refreshStore } from "../actions/globalActions";
 import OpenCardView from "./OpenCardView";
 import { resetRedirect } from "../actions/dashboardActions";
 
@@ -23,6 +24,10 @@ const DashboardGrid = styled.div`
 `;
 
 class Dashboard extends Component {
+  componentDidMount = () => {
+    this.props.dispatch(refreshStore());
+  };
+
   componentDidUpdate = () => {
     if (this.props.toDashboard === true) {
       this.props.dispatch(resetRedirect());

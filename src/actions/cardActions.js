@@ -1,5 +1,7 @@
 import { refreshStore } from "./globalActions";
 import { redirectToDash } from "./dashboardActions";
+import { SERVER_API_ADDRESS } from "../config/configValues";
+import axios from "axios";
 
 export const UPDATE_CARD_FIELD = "UPDATE_CARD";
 export const DELETE_CARD = "DELETE_CARD";
@@ -38,19 +40,17 @@ export const addCard = card => (dispatch, getState) => {
 
   // Dispatching card to server
 
-  const sendCard = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (Math.random() > 0.9) {
-          reject("Failed :(");
-        } else {
-          resolve();
-        }
-      }, 500);
-    });
-  };
-
-  sendCard().then(() => {
+  axios({
+    url: `${SERVER_API_ADDRESS}/api/cards`,
+    method: "post",
+    headers: {
+      authorization: getState().auth.login.token
+    },
+    data: {
+      ...card,
+      boardId: getState().global.boards[0]._id
+    }
+  }).then(() => {
     dispatch(redirectToDash());
     dispatch(refreshStore());
     dispatch(redirectToDash());

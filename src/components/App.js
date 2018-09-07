@@ -32,9 +32,8 @@ export default class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/register" component={LandingPage} />
         <ConnectedPrivateRoute path="/dashboard" component={Dashboard} />
+        <Route path="/" component={LandingPage} />
       </Switch>
     );
   }

@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Formik, Field, Form } from "formik";
 import { loginUser } from "../actions/authActions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const LogForm = styled(Form)`
   display: flex;
@@ -85,7 +86,9 @@ class LoginForm extends Component {
             <button type="submit">
               <span>Login</span>
             </button>
-            <p>Don't have an account? Register now!</p>
+            <p>
+              Don't have an account? <Link to="/register">Register now!</Link>
+            </p>
           </LogForm>
         )}
       />
