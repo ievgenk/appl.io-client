@@ -5,9 +5,12 @@ const initialState = {};
 export default (state = initialState, action) => {
   switch (action.type) {
     case REFRESH_STORE_SUCCESS:
+      let boardObj = {};
+      action.retrievedBoards.forEach(board => (boardObj[board._id] = board));
+
       return {
         ...state,
-        boards: action.retrievedBoards
+        boards: boardObj
       };
 
     default:
