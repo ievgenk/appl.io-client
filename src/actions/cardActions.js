@@ -48,7 +48,7 @@ export const addCard = card => (dispatch, getState) => {
     },
     data: {
       ...card,
-      boardId: getState().global.boards[0]._id
+      boardId: Object.keys(getState().global.boards)[0]
     }
   }).then(() => {
     dispatch(redirectToDash());
