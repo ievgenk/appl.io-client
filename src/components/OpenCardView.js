@@ -16,6 +16,7 @@ const OpenCardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 `;
 
 const OpenCardForm = styled.form`
@@ -77,7 +78,7 @@ class OpenCardView extends Component {
   handleChange = event => {
     const cardFieldValue = event.target.value;
     const cardFieldName = event.target.name;
-    const cardId = this.props.openCard.id;
+    const cardId = this.props.openCard._id;
 
     this.props.dispatch(updateCardField(cardFieldName, cardFieldValue, cardId));
   };

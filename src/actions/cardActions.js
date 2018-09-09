@@ -1,6 +1,7 @@
 import { refreshStore } from "./globalActions";
 import { redirectToDash } from "./dashboardActions";
 import { SERVER_API_ADDRESS } from "../config/configValues";
+import { push } from "connected-react-router";
 import axios from "axios";
 
 export const UPDATE_CARD_FIELD = "UPDATE_CARD";
@@ -16,13 +17,39 @@ export const deleteCard = cardToDelete => {
   };
 };
 
-export const updateCardField = (cardField, newValue, id) => {
-  return {
-    type: UPDATE_CARD_FIELD,
-    cardId: id,
-    cardFieldName: cardField,
-    cardFieldValue: newValue
-  };
+export const updateCardField = (cardField, newValue, id) => (
+  dispatch,
+  getState
+) => {
+  //Submit updated Card
+
+  axios({
+    url: `${SERVER_API_ADDRESS}/api/cards`,
+    method: "put",
+    headers: {
+      authorization: getState().auth.login.token
+    },
+    data: {
+      cardId: id,
+      cardFieldName: cardField,
+      cardFieldValue: newValue
+    }
+  })
+    .then(() => {
+      dispatch(refreshStore());
+    })
+    .catch(err => {
+      if (err.message.includes("401")) {
+        dispatch(push("/"));
+      }
+    });
+
+  // return {
+  //   type: UPDATE_CARD_FIELD,
+  //   cardId: id,
+  //   cardFieldName: cardField,
+  //   cardFieldValue: newValue
+  // };
 };
 
 export const resetOpenCard = () => {

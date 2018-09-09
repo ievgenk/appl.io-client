@@ -7,8 +7,8 @@ import authReducer from "./authReducer";
 import globalReducer from "./globalReducer";
 
 export const rootReducer = combineReducers({
-  boards: boardReducer,
-  cards: cardReducer,
+  // boards: boardReducer,
+  // cards: cardReducer,
   toDashboard: dashboardReducer,
   openCard: openCardReducer,
   auth: authReducer,

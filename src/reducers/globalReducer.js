@@ -1,5 +1,4 @@
 import { REFRESH_STORE_SUCCESS } from "../actions/globalActions";
-
 const initialState = {};
 
 export default (state = initialState, action) => {

@@ -15,6 +15,7 @@ const CardFormContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 `;
 
 const CardForm = styled(Form)`
@@ -75,8 +76,7 @@ class AddCardForm extends Component {
             contactName: "",
             contactEmail: "",
             contactPhone: "",
-            date: currentDate,
-            id: uuid()
+            date: currentDate
           }}
           onSubmit={card => {
             this.props.dispatch(addCard(card));

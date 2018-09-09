@@ -2,8 +2,7 @@ import { MOVE_CARD_WITHIN, MOVE_CARD_ACROSS } from "../actions/boardActions";
 import { REFRESH_STORE_SUCCESS } from "../actions/globalActions";
 import { ADD_CARD } from "../actions/cardActions";
 
-const initialState = {
-};
+const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -22,16 +21,6 @@ export default (state = initialState, action) => {
     case REFRESH_STORE_SUCCESS:
       return {
         ...state
-        // ...action.payload.boards
-      };
-
-    case ADD_CARD:
-      return {
-        ...state,
-        ["board-1"]: {
-          ...state["board-1"],
-          cardIds: [...state["board-1"].cardIds, action.card.id]
-        }
       };
 
     default:

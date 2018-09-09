@@ -32,7 +32,7 @@ class Card extends Component {
           <h3>{this.props.workData.companyName}</h3>
         </CardItem>
         {Object.keys(openCard).length !== 0 ? (
-          <Redirect to={`/dashboard/card/${openCard.id}`} />
+          <Redirect to={`/dashboard/card/${openCard._id}`} />
         ) : (
           ""
         )}
