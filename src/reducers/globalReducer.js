@@ -18,16 +18,28 @@ export default (state = initialState, action) => {
         };
       });
 
+      //Creating a seperate main level Card Object
+
+      let cardArr = [];
+      let cardObj = {};
+
+      action.retrievedBoards.forEach(board => {
+        if (board.cards.length !== 0) {
+          board.cards.forEach(card => cardArr.push(card));
+        }
+      });
+
+      cardArr.forEach(card => (cardObj[card._id] = card));
+
       //Creating board property on a global object for Redux store
 
       let boardObj = {};
       newBoardArray.forEach(board => (boardObj[board._id] = board));
 
-      console.log(action.retrievedBoards);
-
       return {
         ...state,
-        boards: boardObj
+        boards: boardObj,
+        cards: cardObj
       };
 
     default:

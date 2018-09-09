@@ -3,21 +3,6 @@ import { REFRESH_STORE_SUCCESS } from "../actions/globalActions";
 import { ADD_CARD } from "../actions/cardActions";
 
 const initialState = {
-  "board-1": {
-    id: "board-1",
-    title: "Applied",
-    cardIds: []
-  },
-  "board-2": {
-    id: "board-2",
-    title: "Offer Received",
-    cardIds: []
-  },
-  "board-3": {
-    id: "board-3",
-    title: "Phone Screen",
-    cardIds: []
-  }
 };
 
 export default (state = initialState, action) => {

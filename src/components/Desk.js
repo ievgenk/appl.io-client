@@ -18,11 +18,12 @@ const DeskContainer = styled.div`
 `;
 
 const Desk = ({ boards, cards }) => {
+  console.log(boards, cards);
   return (
     <DeskContainer>
       {boards.map(board => (
         <Board
-          key={board.id}
+          key={board._id}
           boardData={board}
           workCards={board.cardIds.map(id => cards[id])}
         />

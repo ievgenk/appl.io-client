@@ -110,11 +110,11 @@ Dashboard.defaultProps = {
   isLoggedIn: true
 };
 
-const mapStateToProps = ({ boards, cards, toDashboard }) => {
+const mapStateToProps = state => {
   return {
-    boards,
-    cards,
-    toDashboard
+    boards: state.global.boards,
+    cards: state.global.cards,
+    toDashboard: state.toDashboard
   };
 };
 
