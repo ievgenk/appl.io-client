@@ -22,7 +22,7 @@ export const moveCardWithinBoard = newBoard => (dispatch, getState) => {
     },
     data: {
       cardIds: newBoard.cardIds,
-      boardId: newBoard.cards[0].boardId
+      boardId: newBoard._id
     }
   })
     .then(() => {
@@ -35,7 +35,10 @@ export const moveCardWithinBoard = newBoard => (dispatch, getState) => {
     });
 };
 
-export const moveCardToOtherBoard = (startBoard, finishBoard) => dispatch => {
+export const moveCardToOtherBoard = (startBoard, finishBoard) => (
+  dispatch,
+  getState
+) => {
   // Updating UI optimistically
 
   dispatch({
@@ -46,19 +49,17 @@ export const moveCardToOtherBoard = (startBoard, finishBoard) => dispatch => {
 
   //Sending new position to the server
 
-  const moveCardAcrossBoardAsync = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (Math.random() > 0.9) {
-          reject("Failed :(");
-        } else {
-          resolve();
-        }
-      }, 300);
-    });
-  };
-
-  moveCardAcrossBoardAsync().then(() => {
+  axios({
+    url: `${SERVER_API_ADDRESS}/api/move/across`,
+    method: "put",
+    headers: {
+      authorization: getState().auth.login.token
+    },
+    data: {
+      startBoard,
+      finishBoard
+    }
+  }).then(() => {
     dispatch(refreshStore());
   });
 };
