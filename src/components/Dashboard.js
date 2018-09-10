@@ -50,8 +50,6 @@ class Dashboard extends Component {
 
     const start = this.props.boards[source.droppableId];
     const finish = this.props.boards[destination.droppableId];
-    console.log(start);
-    console.log(finish);
 
     if (start === finish) {
       const newCardIds = Array.from(start.cardIds);
@@ -64,6 +62,7 @@ class Dashboard extends Component {
         ...start,
         cardIds: newCardIds
       };
+      console.log(newBoard);
 
       this.props.dispatch(moveCardWithinBoard(newBoard));
       return;
