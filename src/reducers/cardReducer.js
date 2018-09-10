@@ -13,8 +13,11 @@ export default (state = {}, action) => {
         [action.card.id]: action.card
       };
 
-    // case REFRESH_STORE_SUCCESS:
-    //   return action.payload.cards;
+    case REFRESH_STORE_SUCCESS:
+      return {
+        ...state,
+        ...action.cards
+      };
 
     case UPDATE_CARD_FIELD:
       return {

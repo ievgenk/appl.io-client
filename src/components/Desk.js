@@ -22,7 +22,7 @@ const Desk = ({ boards, cards }) => {
     <DeskContainer>
       {boards.map(board => (
         <Board
-          key={board._id}
+          key={board.id}
           boardData={board}
           workCards={board.cardIds.map(id => cards[id])}
         />

@@ -20,7 +20,8 @@ export default (state = initialState, action) => {
 
     case REFRESH_STORE_SUCCESS:
       return {
-        ...state
+        ...state,
+        ...action.boards
       };
 
     default:

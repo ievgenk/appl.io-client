@@ -13,6 +13,6 @@ const createStoreWithMiddleware = composeWithDevTools(
 )(createStore);
 
 export const store = createStoreWithMiddleware(
-  connectRouter(history)(rootReducer),
-  load()
+  connectRouter(history)(rootReducer)
+  // load()
 );

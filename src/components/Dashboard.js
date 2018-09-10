@@ -114,8 +114,8 @@ Dashboard.defaultProps = {
 
 const mapStateToProps = state => {
   return {
-    boards: state.global.boards,
-    cards: state.global.cards,
+    boards: state.boards,
+    cards: state.cards,
     toDashboard: state.toDashboard
   };
 };
