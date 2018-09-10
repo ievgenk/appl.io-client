@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
+import { clear } from "redux-localstorage-simple";
 
 const MainNav = styled.nav`
   border-bottom: 3px solid black;
@@ -46,6 +47,7 @@ const NavBtn = styled.button`
 class NavBar extends Component {
   handleLogOut = () => {
     this.props.dispatch(logoutUser());
+    clear();
   };
 
   render() {
