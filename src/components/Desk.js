@@ -18,7 +18,6 @@ const DeskContainer = styled.div`
 `;
 
 const Desk = ({ boards, cards }) => {
-  console.log(boards, cards);
   return (
     <DeskContainer>
       {boards.map(board => (

@@ -5,7 +5,7 @@ export const MOVE_CARD_ACROSS = "MOVE_CARD_ACROSS";
 
 export const moveCardWithinBoard = newBoard => dispatch => {
   // Updating UI optimistically
-
+  console.log(newBoard);
   dispatch({
     type: MOVE_CARD_WITHIN,
     newBoard

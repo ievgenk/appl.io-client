@@ -71,7 +71,7 @@ class OpenCardView extends Component {
   };
 
   handleDelete = () => {
-    this.props.dispatch(deleteCard(this.props.openCard.id));
+    this.props.dispatch(deleteCard(this.props.openCard._id));
     this.handleDashRedirect();
   };
 
@@ -135,6 +135,7 @@ class OpenCardView extends Component {
               contentEditable={true}
               defaultValue={date}
             />
+            <DeleteBtn onClick={this.handleDelete}>Delete Card</DeleteBtn>
           </OpenCardForm>
         </CardFormContainer>
       </OpenCardContainer>

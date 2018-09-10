@@ -10,11 +10,25 @@ export const ADD_CARD = "ADD_CARD";
 export const OPEN_CARD = "OPEN_CARD";
 export const RESET_OPEN_CARD = "RESET_OPEN_CARD";
 
-export const deleteCard = cardToDelete => {
-  return {
-    type: DELETE_CARD,
-    cardToDelete
-  };
+export const deleteCard = cardToDelete => (dispatch, getState) => {
+  axios({
+    url: `${SERVER_API_ADDRESS}/api/cards`,
+    method: "delete",
+    headers: {
+      authorization: getState().auth.login.token
+    },
+    data: {
+      _id: cardToDelete
+    }
+  })
+    .then(() => {
+      dispatch(refreshStore());
+    })
+    .catch(err => {
+      if (err.message.includes("401")) {
+        dispatch(push("/"));
+      }
+    });
 };
 
 export const updateCardField = (cardField, newValue, id) => (
