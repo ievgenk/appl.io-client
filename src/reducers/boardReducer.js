@@ -6,6 +6,18 @@ const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ADD_CARD:
+      const initialBoard = Object.values(state).find(
+        board => board.title === "Applied"
+      );
+      return {
+        ...state,
+        [initialBoard.id]: {
+          ...initialBoard,
+          cardIds: [...initialBoard.cardIds, action.card.id]
+        }
+      };
+
     case MOVE_CARD_WITHIN:
       return {
         ...state,

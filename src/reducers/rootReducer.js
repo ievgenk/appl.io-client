@@ -12,8 +12,8 @@ const appReducer = combineReducers({
   cards: cardReducer,
   toDashboard: dashboardReducer,
   openCard: openCardReducer,
-  auth: authReducer,
-  global: globalReducer
+  auth: authReducer
+  // global: globalReducer
 });
 
 export const rootReducer = (state, action) => {

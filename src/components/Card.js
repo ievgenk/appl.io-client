@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { openCardAction } from "../actions/cardActions";
-import { Redirect } from "react-router-dom";
+import { openCard as openCardThunk } from "../actions/cardActions";
 
 const CardItem = styled.li`
   background-color: ${props => (props.isDragging ? "lightgreen" : "white")};
@@ -19,24 +18,15 @@ class Card extends Component {
   render() {
     const { provided, innerRef, openCard } = this.props;
     return (
-      <Fragment>
-        <CardItem
-          onClick={() =>
-            this.props.dispatch(openCardAction(this.props.workData))
-          }
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          innerRef={innerRef}
-          isDragging={this.props.snapshot.isDragging}
-        >
-          <h3>{this.props.workData.companyName}</h3>
-        </CardItem>
-        {Object.keys(openCard).length !== 0 ? (
-          <Redirect to={`/dashboard/card/${openCard.id}`} />
-        ) : (
-          ""
-        )}
-      </Fragment>
+      <CardItem
+        onClick={() => this.props.dispatch(openCardThunk(this.props.workData))}
+        {...provided.draggableProps}
+        {...provided.dragHandleProps}
+        innerRef={innerRef}
+        isDragging={this.props.snapshot.isDragging}
+      >
+        <h3>{this.props.workData.companyName}</h3>
+      </CardItem>
     );
   }
 }

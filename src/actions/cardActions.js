@@ -97,10 +97,14 @@ export const addCard = card => (dispatch, getState) => {
     dispatch(redirectToDash());
   });
 };
-
 export const openCardAction = card => {
   return {
     type: OPEN_CARD,
     card
   };
+};
+
+export const openCard = card => dispatch => {
+  dispatch(openCardAction(card));
+  dispatch(push(`/dashboard/card/${card.id}`));
 };

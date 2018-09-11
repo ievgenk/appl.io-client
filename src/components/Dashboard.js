@@ -62,7 +62,6 @@ class Dashboard extends Component {
         ...start,
         cardIds: newCardIds
       };
-      console.log(newBoard);
 
       this.props.dispatch(moveCardWithinBoard(newBoard));
       return;

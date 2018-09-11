@@ -14,6 +14,7 @@ export const moveCardWithinBoard = newBoard => (dispatch, getState) => {
   });
 
   //Sending new position to the server
+
   axios({
     url: `${SERVER_API_ADDRESS}/api/move/within`,
     method: "put",
