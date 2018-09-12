@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import Dashboard from "./Dashboard";
 import { connect } from "react-redux";
@@ -33,7 +33,8 @@ export default class App extends Component {
     return (
       <React.Fragment>
         <ConnectedPrivateRoute path="/dashboard" component={Dashboard} />
-        <Route path="/" component={LandingPage} />
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/register" component={LandingPage} />
       </React.Fragment>
     );
   }

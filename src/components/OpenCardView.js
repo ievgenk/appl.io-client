@@ -45,10 +45,6 @@ const CancelButton = styled.div`
   left: 200px;
 `;
 
-const CardHeadline = styled.h3`
-  margin: 0;
-`;
-
 const DeleteBtn = styled.button``;
 
 const FormInput = styled.input``;

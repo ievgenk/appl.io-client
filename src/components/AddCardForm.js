@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import { Link, Redirect } from "react-router-dom";
 import { addCard } from "../actions/cardActions";
 import { connect } from "react-redux";
-import uuid from "uuid/v4";
 
 const CardFormContainer = styled.div`
   grid-column: 1 / -1;

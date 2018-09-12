@@ -45,7 +45,7 @@ class Board extends Component {
           {provided => (
             <CardList innerRef={provided.innerRef} {...provided.droppableProps}>
               {this.props.workCards.map((card, index) => (
-                <Draggable key={card.id} draggableId={card.id} index={index}>
+                <Draggable key={card._id} draggableId={card.id} index={index}>
                   {(provided, snapshot) => (
                     <Card
                       innerRef={provided.innerRef}

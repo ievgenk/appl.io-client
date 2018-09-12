@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import styled from "styled-components";
-import { Route, Redirect, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -76,10 +76,28 @@ export default class LandingPage extends Component {
 
         <LandingMessage>
           <h1>
-            🔍 Track Your
-            <br /> 💼 Job
-            <br /> 📝 Applications
-            <br /> 👌 With Ease!
+            <span role="img" aria-label="maginfying glass emoji">
+              🔍
+            </span>
+            Track Your
+            <br />
+            <span role="img" aria-label="suitcase emoji">
+              💼
+            </span>
+            Job
+            <br />
+            <span
+              role="img"
+              aria-label="document with pencil writing on it emoji"
+            >
+              📝
+            </span>
+            Applications
+            <br />
+            <span role="img" aria-label="ok hand gesture emoji">
+              👌
+            </span>
+            With Ease!
           </h1>
         </LandingMessage>
         <ToastContainer autoClose={2000} />

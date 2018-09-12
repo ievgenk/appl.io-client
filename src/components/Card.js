@@ -16,7 +16,7 @@ const CardItem = styled.li`
 
 class Card extends Component {
   render() {
-    const { provided, innerRef, openCard } = this.props;
+    const { provided, innerRef } = this.props;
     return (
       <CardItem
         onClick={() => this.props.dispatch(openCardThunk(this.props.workData))}
