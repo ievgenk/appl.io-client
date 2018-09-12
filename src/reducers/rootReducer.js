@@ -4,7 +4,6 @@ import cardReducer from "./cardReducer";
 import { dashboardReducer } from "./dashboardReducers";
 import openCardReducer from "./openCardReducer";
 import authReducer from "./authReducer";
-import globalReducer from "./globalReducer";
 import { LOGOUT_USER } from "../actions/authActions";
 
 const appReducer = combineReducers({
@@ -13,7 +12,6 @@ const appReducer = combineReducers({
   toDashboard: dashboardReducer,
   openCard: openCardReducer,
   auth: authReducer
-  // global: globalReducer
 });
 
 export const rootReducer = (state, action) => {
