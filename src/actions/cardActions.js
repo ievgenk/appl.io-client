@@ -3,6 +3,7 @@ import { redirectToDash } from "./dashboardActions";
 import { SERVER_API_ADDRESS } from "../config/configValues";
 import { push } from "connected-react-router";
 import axios from "axios";
+import { clear } from "redux-localstorage-simple";
 
 export const UPDATE_CARD_FIELD = "UPDATE_CARD";
 export const DELETE_CARD = "DELETE_CARD";
@@ -27,6 +28,7 @@ export const deleteCard = cardToDelete => (dispatch, getState) => {
     .catch(err => {
       if (err.message.includes("401")) {
         dispatch(push("/"));
+        clear();
       }
     });
 };
@@ -55,15 +57,9 @@ export const updateCardField = (cardField, newValue, id) => (
     .catch(err => {
       if (err.message.includes("401")) {
         dispatch(push("/"));
+        clear();
       }
     });
-
-  // return {
-  //   type: UPDATE_CARD_FIELD,
-  //   cardId: id,
-  //   cardFieldName: cardField,
-  //   cardFieldValue: newValue
-  // };
 };
 
 export const resetOpenCard = () => {
@@ -89,7 +85,7 @@ export const addCard = card => (dispatch, getState) => {
     },
     data: {
       ...card,
-      boardId: Object.keys(getState().global.boards)[0]
+      boardId: Object.keys(getState().boards)[0]
     }
   }).then(() => {
     dispatch(redirectToDash());

@@ -2,6 +2,7 @@ import { refreshStore } from "../actions/globalActions";
 import { SERVER_API_ADDRESS } from "../config/configValues";
 import { push } from "connected-react-router";
 import axios from "axios";
+import { clear } from "redux-localstorage-simple";
 
 export const MOVE_CARD_WITHIN = "MOVE_CARD_WITHIN";
 export const MOVE_CARD_ACROSS = "MOVE_CARD_ACROSS";
@@ -32,6 +33,7 @@ export const moveCardWithinBoard = newBoard => (dispatch, getState) => {
     .catch(err => {
       if (err.message.includes("401")) {
         dispatch(push("/"));
+        clear();
       }
     });
 };

@@ -31,10 +31,10 @@ const ConnectedPrivateRoute = connect(mapStateToProps)(PrivateRoute);
 export default class App extends Component {
   render() {
     return (
-      <Switch>
+      <React.Fragment>
         <ConnectedPrivateRoute path="/dashboard" component={Dashboard} />
         <Route path="/" component={LandingPage} />
-      </Switch>
+      </React.Fragment>
     );
   }
 }
