@@ -7,15 +7,15 @@ import { clear } from "redux-localstorage-simple";
 
 const MainNav = styled.nav`
   border-bottom: 3px solid black;
-  /* grid-column: 1/-1;
-  grid-row: 1 / 2; */
-  font-size: ${props => (props.landing ? "2.5rem" : "2rem")};
+  grid-column: ${props => (props.position === "landing" ? "1 / -1" : "")};
+  grid-row: ${props => (props.position === "landing" ? "1 / 2" : "")};
+  font-size: ${props => (props.position === "landing" ? "2.5rem" : "2rem")};
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-  min-height: 10%;
+  min-height: 7%;
   h1 {
     margin: 0;
   }
@@ -52,7 +52,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <MainNav>
+      <MainNav position={this.props.position}>
         <h1>Appl.io</h1>
         {this.props.btnPresent === true && (
           <BtnContainer>

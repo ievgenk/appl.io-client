@@ -15,7 +15,6 @@ export default (state = {}, action) => {
 
     case REFRESH_STORE_SUCCESS:
       return {
-        ...state,
         ...action.cards
       };
 
