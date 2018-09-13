@@ -16,11 +16,12 @@ import OpenCardView from "./OpenCardView";
 import { resetRedirect } from "../actions/dashboardActions";
 
 const DashboardGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  display: flex;
+  flex-direction: column;
+  /* grid-template-columns: repeat(12, 1fr); */
   height: 100vh;
   width: 100vw;
-  grid-template-rows: repeat(10, minmax(min-content, 2000px));
+  /* grid-template-rows: repeat(10, minmax(min-content, 2000px)); */
 `;
 
 class Dashboard extends Component {

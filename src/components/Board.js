@@ -15,7 +15,7 @@ const BoardWrapper = styled.div`
   color: black;
   margin-top: 55px;
   border-radius: 5px;
-  height: auto;
+  height: fit-content;
 
   header {
     margin-left: 2rem;

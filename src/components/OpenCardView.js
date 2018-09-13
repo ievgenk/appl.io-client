@@ -10,8 +10,10 @@ import {
 } from "../actions/cardActions";
 
 const OpenCardContainer = styled.div`
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
   background-color: rgba(12, 12, 12, 0.5);
   display: flex;
   justify-content: center;

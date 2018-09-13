@@ -4,12 +4,11 @@ import Board from "./Board";
 
 const DeskContainer = styled.div`
   background-color: #2183ce;
-  max-height: 100%;
   width: 100%;
-  display: flex;
+  height: 100vh;
   overflow-x: auto;
-  grid-column: 1 / -1;
-  grid-row: 2 / -1;
+  /* grid-column: 1 / -1; */
+  display: flex;
 
   > * {
     flex: 0 0 auto;

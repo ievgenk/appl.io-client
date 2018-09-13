@@ -7,15 +7,15 @@ import { clear } from "redux-localstorage-simple";
 
 const MainNav = styled.nav`
   border-bottom: 3px solid black;
-  grid-column: 1/-1;
-  grid-row: 1 / 2;
+  /* grid-column: 1/-1;
+  grid-row: 1 / 2; */
   font-size: ${props => (props.landing ? "2.5rem" : "2rem")};
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-
+  min-height: 10%;
   h1 {
     margin: 0;
   }
