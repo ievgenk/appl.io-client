@@ -126,13 +126,13 @@ describe("<Dashboard />", () => {
     shallow(<Dashboard store={store} />);
   });
 
-  it("When the card is dropped to another board it dispatches the correct action", () => {
-    render(
-      <MemoryRouter>
-        <Provider store={store}>
-          <Dashboard />
-        </Provider>
-      </MemoryRouter>
-    );
-  });
+  // it("When the card is dropped to another board it dispatches the correct action", () => {
+  //   render(
+  //     <MemoryRouter>
+  //       <Provider store={store}>
+  //         <Dashboard />
+  //       </Provider>
+  //     </MemoryRouter>
+  //   );
+  // });
 });

@@ -6,6 +6,7 @@ import App from "../../components/App";
 
 describe("<App />", () => {
   it("Render()", () => {
-    shallow(<App />);
+    const component = shallow(<App />);
+    expect(component).toMatchSnapshot();
   });
 });
