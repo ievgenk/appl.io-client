@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import Dashboard from "./Dashboard";
+import PageNotFound from "./PageNotFound";
 import { connect } from "react-redux";
 
 //Secure Route for Dashboard
@@ -32,9 +33,13 @@ export default class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <ConnectedPrivateRoute path="/dashboard" component={Dashboard} />
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/register" component={LandingPage} />
+        <Switch>
+          <ConnectedPrivateRoute path="/dashboard" component={Dashboard} />
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/register" component={LandingPage} />
+          <Route exact path="/about" component={LandingPage} />
+          <Route component={PageNotFound} />
+        </Switch>
       </React.Fragment>
     );
   }

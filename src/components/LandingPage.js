@@ -4,7 +4,10 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import styled from "styled-components";
 import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 import { ToastContainer } from "react-toastify";
+import PageNotFound from "./PageNotFound";
+import About from "./About";
 import "react-toastify/dist/ReactToastify.css";
 
 const LandingGrid = styled.div`
@@ -64,44 +67,54 @@ const LandingMessage = styled.span`
   }
 `;
 
-export default class LandingPage extends Component {
+class LandingPage extends Component {
   render() {
     return (
       <LandingGrid>
-        <NavBar position="landing" />
+        <NavBar position="landing" aboutPresent={true} />
         <Switch>
           <Route exact path="/register" component={RegisterForm} />
           <Route exact path="/" component={LoginForm} />
+          <Route exact path="/about" component={About} />
         </Switch>
 
-        <LandingMessage>
-          <h1>
-            <span role="img" aria-label="maginfying glass emoji">
-              🔍
-            </span>
-            Track Your
-            <br />
-            <span role="img" aria-label="suitcase emoji">
-              💼
-            </span>
-            Job
-            <br />
-            <span
-              role="img"
-              aria-label="document with pencil writing on it emoji"
-            >
-              📝
-            </span>
-            Applications
-            <br />
-            <span role="img" aria-label="ok hand gesture emoji">
-              👌
-            </span>
-            With Ease!
-          </h1>
-        </LandingMessage>
+        {this.props.router.location.pathname !== "/about" && (
+          <LandingMessage>
+            <h1>
+              <span role="img" aria-label="maginfying glass emoji">
+                🔍
+              </span>
+              Track Your
+              <br />
+              <span role="img" aria-label="suitcase emoji">
+                💼
+              </span>
+              Job
+              <br />
+              <span
+                role="img"
+                aria-label="document with pencil writing on it emoji"
+              >
+                📝
+              </span>
+              Applications
+              <br />
+              <span role="img" aria-label="ok hand gesture emoji">
+                👌
+              </span>
+              With Ease!
+            </h1>
+          </LandingMessage>
+        )}
+
         <ToastContainer autoClose={2000} />
       </LandingGrid>
     );
   }
 }
+
+const mapStateToProps = ({ router }) => ({
+  router
+});
+
+export default connect(mapStateToProps)(LandingPage);

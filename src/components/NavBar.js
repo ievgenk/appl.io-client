@@ -66,6 +66,13 @@ class NavBar extends Component {
             </NavBtn>
           </BtnContainer>
         )}
+        {this.props.aboutPresent === true && (
+          <BtnContainer>
+            <NavBtn>
+              <Link to="/about">About</Link>
+            </NavBtn>
+          </BtnContainer>
+        )}
       </MainNav>
     );
   }

@@ -51,7 +51,11 @@ export const loginUser = (email, password) => dispatch => {
       dispatch(push("/dashboard"));
     })
     .catch(error => {
-      dispatch(failedUserLogin(error.response.data.message));
+      if (error.response === undefined) {
+        dispatch(failedUserLogin("Server Did Not Respond"));
+      } else {
+        dispatch(failedUserLogin(error.response.data.message));
+      }
     });
 };
 
@@ -87,7 +91,9 @@ export const registerNewUser = ({ email, password }) => dispatch => {
       dispatch(push("/"));
     })
     .catch(err => {
-      if (err) {
+      if (err.response === undefined) {
+        dispatch(failedUserRegistration("Server Did Not Respond"));
+      } else {
         dispatch(failedUserRegistration(err.response.data.message));
       }
     });
