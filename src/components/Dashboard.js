@@ -96,6 +96,7 @@ class Dashboard extends Component {
           <Desk
             boards={Object.values(this.props.boards)}
             cards={this.props.cards}
+            router={this.props.router}
           />
           <Route exact path="/dashboard/add-card" component={AddCardForm} />
           <Route exact path="/dashboard/card/:id" component={OpenCardView} />
@@ -115,7 +116,8 @@ const mapStateToProps = state => {
   return {
     boards: state.boards,
     cards: state.cards,
-    toDashboard: state.toDashboard
+    toDashboard: state.toDashboard,
+    router: state.router
   };
 };
 

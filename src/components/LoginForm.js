@@ -11,9 +11,8 @@ const LogForm = styled(Form)`
   flex-direction: column;
   border: 2px black solid;
   padding: 50px;
-  grid-column: 8 / 12;
   font-size: 2.4rem;
-  grid-row: 3 / 7;
+  grid-area: frm;
   min-height: fit-content;
   background-color: white;
   label {

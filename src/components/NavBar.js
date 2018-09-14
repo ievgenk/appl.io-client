@@ -7,17 +7,17 @@ import { clear } from "redux-localstorage-simple";
 
 const MainNav = styled.nav`
   border-bottom: 3px solid black;
-  grid-column: ${props => (props.position === "landing" ? "1 / -1" : "")};
-  grid-row: ${props => (props.position === "landing" ? "1 / 2" : "")};
-  font-size: ${props => (props.position === "landing" ? "2.5rem" : "2rem")};
-  padding: 20px;
+  grid-area: nav;
+  font-size: ${props => (props.position === "landing" ? "2.2rem" : "2.2rem")};
+  padding: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-  min-height: 7%;
+  height: 10vh;
   h1 {
     margin: 0;
+    color: black;
   }
   @media screen and (max-width: 600px) {
     font-size: 1.5rem;
@@ -28,7 +28,7 @@ const BtnContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 25%;
+  max-width: 50%;
 `;
 
 const NavBtn = styled.button`
@@ -37,6 +37,7 @@ const NavBtn = styled.button`
   margin: 0 10px;
   cursor: pointer;
   font-size: 3rem;
+  padding: 5px;
 
   a {
     color: black;
@@ -53,9 +54,14 @@ class NavBar extends Component {
   render() {
     return (
       <MainNav position={this.props.position}>
-        <h1>Appl.io</h1>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <h1>Appl.io</h1>
+        </Link>
         {this.props.btnPresent === true && (
           <BtnContainer>
+            <NavBtn>
+              <Link to="/dashboard/statistics">Statistics</Link>
+            </NavBtn>
             <NavBtn>
               <Link to="/dashboard/add-card">Add A Card</Link>
             </NavBtn>
@@ -69,7 +75,11 @@ class NavBar extends Component {
         {this.props.aboutPresent === true && (
           <BtnContainer>
             <NavBtn>
-              <Link to="/about">About</Link>
+              {this.props.router.location.pathname === "/" ? (
+                <Link to="/about">About</Link>
+              ) : (
+                <Link to="/">Home</Link>
+              )}
             </NavBtn>
           </BtnContainer>
         )}
@@ -78,4 +88,8 @@ class NavBar extends Component {
   }
 }
 
-export default connect()(NavBar);
+const mapStateToProps = ({ router }) => ({
+  router
+});
+
+export default connect(mapStateToProps)(NavBar);

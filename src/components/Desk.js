@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import Board from "./Board";
+import Statistics from "./Statistics";
 
 const DeskContainer = styled.div`
   background-color: #2183ce;
   width: 100%;
   height: 100vh;
   overflow-x: auto;
-  /* grid-column: 1 / -1; */
   display: flex;
 
   > * {
@@ -16,8 +16,9 @@ const DeskContainer = styled.div`
   }
 `;
 
-const Desk = ({ boards, cards }) => {
-  return (
+const Desk = ({ boards, cards, router }) => {
+  let route = router.location.pathname;
+  return route !== "/dashboard/statistics" ? (
     <DeskContainer>
       {boards.map(board => (
         <Board
@@ -27,6 +28,8 @@ const Desk = ({ boards, cards }) => {
         />
       ))}
     </DeskContainer>
+  ) : (
+    <Statistics />
   );
 };
 export default Desk;

@@ -11,9 +11,9 @@ const RegForm = styled(Form)`
   flex-direction: column;
   border: 2px black solid;
   padding: 50px;
-  grid-column: 8 / 12;
+  grid-area: frm;
   font-size: 2.4rem;
-  grid-row: 3 / 7;
+
   min-height: fit-content;
   background-color: white;
 
