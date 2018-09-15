@@ -66,7 +66,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js && cp node scripts/build.js/index.html build/404.html",
     "test": "jest",
     "test:watch": "jest --watch"
   },
