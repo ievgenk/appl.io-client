@@ -9,11 +9,13 @@ import { Link } from "react-router-dom";
 const LogForm = styled(Form)`
   display: flex;
   flex-direction: column;
+  overflow: auto;
   border: 2px black solid;
-  padding: 50px;
+  padding: 30px;
   font-size: 2.4rem;
   grid-area: frm;
-  min-height: fit-content;
+  min-height: 30vh;
+  max-height: 60vh;
   background-color: white;
   label {
     padding: 10px;
@@ -21,6 +23,13 @@ const LogForm = styled(Form)`
 
   input {
     padding: 10px;
+  }
+  p {
+    margin: 5px;
+    color: red;
+  }
+  .auth-link {
+    color: black;
   }
 
   button {
@@ -85,7 +94,7 @@ class LoginForm extends Component {
             <button type="submit">
               <span>Login</span>
             </button>
-            <p>
+            <p className="auth-link">
               Don't have an account? <Link to="/register">Register now!</Link>
             </p>
           </LogForm>

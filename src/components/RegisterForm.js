@@ -10,10 +10,10 @@ const RegForm = styled(Form)`
   display: flex;
   flex-direction: column;
   border: 2px black solid;
-  padding: 50px;
+  padding: 30px;
   grid-area: frm;
   font-size: 2.4rem;
-
+  max-height: 50vh;
   min-height: fit-content;
   background-color: white;
 

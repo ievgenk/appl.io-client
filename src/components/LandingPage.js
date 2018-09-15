@@ -6,19 +6,19 @@ import styled from "styled-components";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { ToastContainer } from "react-toastify";
-import PageNotFound from "./PageNotFound";
+import Footer from "./Footer";
 import About from "./About";
 import "react-toastify/dist/ReactToastify.css";
 
 const LandingGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(min-content, max-content);
+  align-items: center;
+  grid-auto-rows: auto 1fr auto;
   grid-template-areas:
     "nav nav nav nav nav nav nav nav nav nav nav nav"
-    ". . . . . . . . . . . ."
     ". msg msg msg . . . frm frm frm frm ."
-    ". . . . . . . . . . . .";
+    "ftr ftr ftr ftr ftr ftr ftr ftr ftr ftr ftr ftr";
   grid-gap: 10px;
   height: 100vh;
   width: 100vw;
@@ -37,7 +37,7 @@ const LandingMessage = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid black;
+  border: 2px solid black;
   max-height: 50vh;
   h1 {
     text-align: left;
@@ -111,7 +111,7 @@ class LandingPage extends Component {
             </h1>
           </LandingMessage>
         )}
-
+        <Footer />
         <ToastContainer autoClose={2000} />
       </LandingGrid>
     );
