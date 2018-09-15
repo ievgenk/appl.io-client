@@ -5,3 +5,10 @@ cache:
     - node_modules
 env:
   - CI=true
+deploy:
+  provider: heroku
+  api_key:
+    secure: gU4vgOO59uyKmsnyNgpnQAn90Y1vijk+ol/eLQZG+arxuWC0G53d4DXmXqH37M39P51N+QcHg/bpWABj1reLnM5z6h2b3MWydyfbx6iH8VLq4Lq3nREJ3uugAYHbxwYJWgjImn01QM3q+UyBf7YsBF6W2yRycf8zk+fDG0hBCFMBpCLXsEsvyUdvsmcraPBosi7BDVW/isjkOpe1taIMwiAC5EsmnYFGyKWP7xFLYJm8YEo1iq1wgoxio8CUM6zoA1ZFNOh5AdSkeO3aOQdXuhoyR6XBJ/8oCyZXLqMikW82b20b47PSiTcS98OXrwMVclx/Z14ETl0b02lAw8yPLeCm75Q6TzasJVDpHR1UbcCBTaRQbsVsjsWp23Gy/LHSjfkfiXn3v2F7pSRNe+IluaAWDVAFPxN1c5MvuTBFRw8cKumyX2EAj+nkOmZFVpRzhSp2wSQ6UH5jtUSyZd7z3rjZ1mi764DNm2nKaMT12DEoEXE2HT6s0QEqpX3r21JhHblVk+Jpz9pZzFA8rBFzcVM7NUUvCtcFJa5bZzfS2V9zXHK+/jpHuRarUOlBLdCL2rFxAtmMwcsaQLVHq2ZsIu2GWQqzke3d3FwD3t8Nvob0N9Gm5HmdmW9dgUW0kA2vtffjD4DXG9uUZ4pFNul7cjEIXUnA3VM0wjaq/kImjFQ=
+  app: appl-io
+  on:
+    repo: ievgenk/appl.io-client
