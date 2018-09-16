@@ -37,11 +37,11 @@ const CardList = styled.ul`
 
 class Board extends Component {
   render() {
-    const { title, id } = this.props.boardData;
+    const { title, _id } = this.props.boardData;
     return (
       <BoardWrapper>
         <header>{title}</header>
-        <Droppable droppableId={id}>
+        <Droppable droppableId={_id}>
           {provided => (
             <CardList innerRef={provided.innerRef} {...provided.droppableProps}>
               {this.props.workCards.map((card, index) => (

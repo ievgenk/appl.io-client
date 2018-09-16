@@ -67,7 +67,12 @@ class NavBar extends Component {
         {this.props.btnPresent === true && (
           <BtnContainer>
             <NavBtn>
-              <Link to="/dashboard/statistics">Statistics</Link>
+              {this.props.router.location.pathname ===
+              "/dashboard/statistics" ? (
+                <Link to="/dashboard">Dashboard</Link>
+              ) : (
+                <Link to="/dashboard/statistics">Statistics</Link>
+              )}
             </NavBtn>
             <NavBtn>
               <Link to="/dashboard/add-card">Add A Card</Link>

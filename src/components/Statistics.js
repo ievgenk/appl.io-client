@@ -7,11 +7,23 @@ const StatsContainer = styled.div`
   width: 100vw;
 `;
 
+const StatsBox = styled.div`
+  display: flex;
+  width: 50%;
+  height: 50%;
+  border: 3px solid black;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 class Statistics extends Component {
   render() {
     return (
       <StatsContainer>
-        <h1>Hello</h1>
+        <StatsBox>
+          <h1>Hello</h1>
+        </StatsBox>
       </StatsContainer>
     );
   }

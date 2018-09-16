@@ -9,13 +9,7 @@ import thunk from "redux-thunk";
 export const history = createBrowserHistory();
 
 const createStoreWithMiddleware = composeWithDevTools(
-  applyMiddleware(
-    routerMiddleware(history),
-    thunk,
-    save({
-      states: ["auth"]
-    })
-  )
+  applyMiddleware(routerMiddleware(history), thunk, save())
 )(createStore);
 
 export const store = createStoreWithMiddleware(
