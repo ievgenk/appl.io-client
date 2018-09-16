@@ -14,7 +14,7 @@ const LandingGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
-  grid-auto-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
     "nav nav nav nav nav nav nav nav nav nav nav nav"
     ". msg msg msg . . . frm frm frm frm ."
@@ -107,7 +107,7 @@ class LandingPage extends Component {
               <span role="img" aria-label="ok hand gesture emoji">
                 👌
               </span>
-              With Ease!
+              &nbsp;With Ease!
             </h1>
           </LandingMessage>
         )}

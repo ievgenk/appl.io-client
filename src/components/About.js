@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const AboutContainer = styled.div`
-  border: 3px black solid;
+  border: 2px black solid;
   grid-column: 3 / 11;
+  max-height: 60vh;
+  overflow: auto;
   background-color: white;
   display: flex;
   align-items: center;

@@ -23,6 +23,7 @@ const LogForm = styled(Form)`
 
   input {
     padding: 10px;
+    border: 1px solid black;
   }
   p {
     margin: 5px;
@@ -33,13 +34,24 @@ const LogForm = styled(Form)`
   }
 
   button {
-    margin: 10px;
+    border: 2px solid black;
+    background-color: white;
+    cursor: pointer;
+    margin: 25px 0px 10px 0px;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
   }
+
+  button:hover {
+    transform: translateY(-7px);
+    box-shadow: 15px 15px rgba(156, 252, 156, 0.8);
+  }
+
   @media screen and (max-width: 600px) {
     padding: 50px;
     grid-column: 1 / -1;
@@ -95,7 +107,8 @@ class LoginForm extends Component {
               <span>Login</span>
             </button>
             <p className="auth-link">
-              Don't have an account? <Link to="/register">Register now!</Link>
+              Don't have an account? <br />
+              <Link to="/register">Register now!</Link>
             </p>
           </LogForm>
         )}

@@ -23,15 +23,34 @@ const RegForm = styled(Form)`
 
   input {
     padding: 10px;
+    border: 1px solid black;
+  }
+
+  p {
+    margin: 5px;
+    color: red;
+  }
+  .auth-link {
+    color: black;
   }
 
   button {
-    margin: 10px;
+    border: 2px solid black;
+    background-color: white;
+    cursor: pointer;
+    margin: 25px 0px 10px 0px;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+  }
+
+  button:hover {
+    transform: translateY(-7px);
+    box-shadow: 15px 15px rgba(156, 252, 156, 0.8);
   }
 `;
 
@@ -66,10 +85,10 @@ class RegisterForm extends Component {
           resetForm
         }) => (
           <RegForm>
-            {touched.email && errors.email && <h3>{errors.email}</h3>}
+            {touched.email && errors.email && <p>{errors.email}</p>}
             <label htmlFor="email">Email</label>
             <Field type="email" name="email" placeholder="Enter Your Email" />
-            {touched.password && errors.password && <h3>{errors.password}</h3>}
+            {touched.password && errors.password && <p>{errors.password}</p>}
             <label htmlFor="password">Password</label>
             <Field
               type="password"
@@ -79,8 +98,9 @@ class RegisterForm extends Component {
             <button type="submit">
               <span>Register</span>
             </button>
-            <p>
+            <p className="auth-link">
               Already have an account?
+              <br />
               <Link to="/">Login here!</Link>
             </p>
           </RegForm>

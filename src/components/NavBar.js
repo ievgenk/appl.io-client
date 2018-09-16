@@ -37,7 +37,14 @@ const NavBtn = styled.button`
   margin: 0 10px;
   cursor: pointer;
   font-size: 3rem;
+  transition: all 0.3s ease 0s;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: 5px;
+
+  :hover {
+    transform: translateY(-5px);
+    box-shadow: 10px 10px rgba(171, 183, 217, 0.8);
+  }
 
   a {
     color: black;
@@ -75,7 +82,8 @@ class NavBar extends Component {
         {this.props.aboutPresent === true && (
           <BtnContainer>
             <NavBtn>
-              {this.props.router.location.pathname === "/" ? (
+              {this.props.router.location.pathname === "/" ||
+              this.props.router.location.pathname === "/register" ? (
                 <Link to="/about">About</Link>
               ) : (
                 <Link to="/">Home</Link>
