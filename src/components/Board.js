@@ -5,20 +5,24 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 
 const BoardWrapper = styled.div`
-  /* height: 70%; */
   min-width: 25%;
-  background-color: lightgray;
+  background-color: rgba(33, 131, 206, 0.3);
   margin: 20px;
   display: flex;
   flex-direction: column;
   text-align: left;
   color: black;
   margin-top: 55px;
-  border-radius: 5px;
+  border: 3px solid black;
   height: fit-content;
 
   header {
-    margin-left: 2rem;
+    border-bottom: 2px solid black;
+    background-color: white;
+  }
+  header h2 {
+    margin: 10px 0 0 0;
+    padding: 0 10px 0 10px;
     font-size: 3.5rem;
     font-weight: bolder;
     padding: 10px;
@@ -40,7 +44,9 @@ class Board extends Component {
     const { title, _id } = this.props.boardData;
     return (
       <BoardWrapper>
-        <header>{title}</header>
+        <header>
+          <h2>{title}</h2>
+        </header>
         <Droppable droppableId={_id}>
           {provided => (
             <CardList innerRef={provided.innerRef} {...provided.droppableProps}>

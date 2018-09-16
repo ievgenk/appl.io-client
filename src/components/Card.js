@@ -12,6 +12,8 @@ const CardItem = styled.li`
   border-radius: 3px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   width: 350px;
+  border: 2px grey solid;
+  box-shadow: 5px 5px 5px rgba(12, 12, 12, 0.1);
 `;
 
 class Card extends Component {
