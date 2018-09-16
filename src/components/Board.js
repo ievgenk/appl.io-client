@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 const BoardWrapper = styled.div`
   min-width: 25%;
-  background-color: rgba(33, 131, 206, 0.3);
+  background-color: rgba(33, 131, 206, 0.4);
   margin: 20px;
   display: flex;
   flex-direction: column;
