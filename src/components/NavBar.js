@@ -62,7 +62,7 @@ class NavBar extends Component {
     return (
       <MainNav position={this.props.position}>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <h1>Appl.io</h1>
+          <h1 className="logo">Appl.io</h1>
         </Link>
         {this.props.btnPresent === true && (
           <BtnContainer>
