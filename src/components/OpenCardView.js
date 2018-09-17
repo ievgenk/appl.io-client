@@ -8,6 +8,7 @@ import {
   updateCardField,
   deleteCard
 } from "../actions/cardActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const OpenCardContainer = styled.div`
   position: absolute;
@@ -23,41 +24,77 @@ const OpenCardContainer = styled.div`
 
 const OpenCardForm = styled.form`
   background-color: white;
-  min-height: 70%;
+  height: 80%;
+  width: 80%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 40px;
-  min-width: 35vw;
-  font-size: 3rem;
-`;
-
-const CancelButton = styled.div`
-  width: 40px;
-  height: 40px;
-  border: 2px solid black;
-  color: red;
-  display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-weight: bolder;
-  position: relative;
-  top: -25px;
-  left: 200px;
+  min-width: 35vw;
+  font-size: 3rem;
+  border: 3px solid black;
+  box-shadow: 10px 10px 8px rgba(171, 183, 217, 0.6);
+
+  h1 {
+    font-size: 3.5rem;
+    margin: 0;
+  }
 `;
 
-const DeleteBtn = styled.button``;
-
-const FormInput = styled.input``;
-
-const CardFormContainer = styled.div`
+const MainFlexContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: space-around;
-  min-height: 70%;
+  height: 70%;
+  width: 90%;
+`;
+
+const FlexBoxColumn = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  align-self: flex-start;
+`;
+
+const CancelButton = styled.span`
+  position: relative;
+  top: -7%;
+  color: red;
+  left: 45%;
+`;
+const CardInputLabel = styled.label`
+  font-size: 3rem;
+  margin-bottom: 5px;
+  margin: 10px 0;
+  font-weight: bold;
+`;
+
+const DeleteBtn = styled.button`
+  border: 2px solid black;
   background-color: white;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+
+  :hover {
+    transform: translateY(-7px);
+    box-shadow: 15px 15px rgba(252, 43, 51, 0.8);
+  }
+`;
+
+const FormInput = styled.input`
+  border: none;
+  border-bottom: 2px solid black;
+  margin: 10px 0;
+
+  transition: all 0.3s ease 0s;
+  :focus-within {
+    background-color: rgba(156, 252, 156, 0.8);
+  }
 `;
 
 class OpenCardView extends Component {
@@ -95,47 +132,70 @@ class OpenCardView extends Component {
     }
     return (
       <OpenCardContainer>
-        <CardFormContainer>
-          <OpenCardForm>
-            <CancelButton onClick={this.handleDashRedirect}>X</CancelButton>
-            <FormInput
-              name={"companyName"}
-              contentEditable={true}
-              defaultValue={companyName}
-              onChange={this.handleChange}
-            />
-            <FormInput
-              name={"postingURL"}
-              contentEditable={true}
-              defaultValue={postingURL}
-              onChange={this.handleChange}
-            />
-            <FormInput
-              name={"contactName"}
-              contentEditable={true}
-              defaultValue={contactName}
-              onChange={this.handleChange}
-            />
-            <FormInput
-              name={"contactEmail"}
-              contentEditable={true}
-              defaultValue={contactEmail}
-              onChange={this.handleChange}
-            />
-            <FormInput
-              name={"contactPhone"}
-              contentEditable={true}
-              defaultValue={contactPhone}
-              onChange={this.handleChange}
-            />
-            <FormInput
-              name={"date"}
-              contentEditable={true}
-              defaultValue={date}
-            />
-            <DeleteBtn onClick={this.handleDelete}>Delete Card</DeleteBtn>
-          </OpenCardForm>
-        </CardFormContainer>
+        <OpenCardForm>
+          <h1>Edit Information</h1>
+          <CancelButton onClick={this.handleDashRedirect}>
+            <FontAwesomeIcon icon="times" size="lg" />
+          </CancelButton>
+          <MainFlexContainer>
+            <FlexBoxColumn>
+              <CardInputLabel htmlFor="companyName">
+                Company Name:
+              </CardInputLabel>
+              <FormInput
+                name={"companyName"}
+                contentEditable={true}
+                defaultValue={companyName}
+                onChange={this.handleChange}
+              />
+              <CardInputLabel htmlFor="postingURL">
+                Job Posting Link:
+              </CardInputLabel>
+              <FormInput
+                name={"postingURL"}
+                contentEditable={true}
+                defaultValue={postingURL}
+                onChange={this.handleChange}
+              />
+              <CardInputLabel htmlFor="contactName">
+                Contact Name:
+              </CardInputLabel>
+              <FormInput
+                name={"contactName"}
+                contentEditable={true}
+                defaultValue={contactName}
+                onChange={this.handleChange}
+              />
+            </FlexBoxColumn>
+            <FlexBoxColumn>
+              <CardInputLabel htmlFor="contactEmail">
+                Contact Email:
+              </CardInputLabel>
+              <FormInput
+                name={"contactEmail"}
+                contentEditable={true}
+                defaultValue={contactEmail}
+                onChange={this.handleChange}
+              />
+              <CardInputLabel htmlFor="contactPhone">
+                Contact Phone:
+              </CardInputLabel>
+              <FormInput
+                name={"contactPhone"}
+                contentEditable={true}
+                defaultValue={contactPhone}
+                onChange={this.handleChange}
+              />
+              <CardInputLabel htmlFor="date">Date Applied:</CardInputLabel>
+              <FormInput
+                name={"date"}
+                contentEditable={true}
+                defaultValue={date}
+              />
+            </FlexBoxColumn>
+          </MainFlexContainer>
+          <DeleteBtn onClick={this.handleDelete}>Delete Card</DeleteBtn>
+        </OpenCardForm>
       </OpenCardContainer>
     );
   }

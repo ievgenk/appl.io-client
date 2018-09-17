@@ -18,7 +18,14 @@ injectGlobal`
     width:100%;
     font-size: 10px;
     font-family: 'Work Sans', sans-serif;
+
   }
+  input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 
   `;
 
