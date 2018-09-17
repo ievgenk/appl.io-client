@@ -74,14 +74,12 @@ class NavBar extends Component {
                 <Link to="/dashboard/statistics">Statistics</Link>
               )}
             </NavBtn>
-            <NavBtn>
-              <Link to="/dashboard/add-card">Add A Card</Link>
-            </NavBtn>
-            <NavBtn>
-              <Link to="#" onClick={this.handleLogOut}>
-                Log Out
-              </Link>
-            </NavBtn>
+            <Link to="/dashboard/add-card">
+              <NavBtn>Add A Card</NavBtn>
+            </Link>
+            <Link to="#" onClick={this.handleLogOut}>
+              <NavBtn>Log Out</NavBtn>
+            </Link>
           </BtnContainer>
         )}
         {this.props.aboutPresent === true && (

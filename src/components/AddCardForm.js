@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { Link, Redirect } from "react-router-dom";
 import { addCard } from "../actions/cardActions";
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CardFormContainer = styled.div`
   position: absolute;
@@ -21,13 +22,20 @@ const CardFormContainer = styled.div`
 
 const CardForm = styled(Form)`
   background-color: white;
-  min-height: 50%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: 20px;
   min-width: 35vw;
   font-size: 3rem;
+  border: 3px solid black;
+  box-shadow: 8px 8px 10px rgba(156, 252, 156, 0.4);
+
+  input {
+    border: none;
+    border-bottom: 2px solid black;
+  }
 `;
 
 const CardInput = styled(Field)`
@@ -37,9 +45,18 @@ const CardInput = styled(Field)`
 `;
 
 const SubmitButton = styled.button`
-  min-height: fit-content;
-  max-width: 25%;
-  font-size: 2rem;
+  border: 2px solid black;
+  background-color: white;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+
+  :hover {
+    transform: translateY(-7px);
+    box-shadow: 15px 15px rgba(156, 252, 156, 0.8);
+  }
 `;
 
 const CardInputLabel = styled.label`
@@ -47,18 +64,11 @@ const CardInputLabel = styled.label`
   margin-bottom: 5px;
 `;
 
-const CancelButton = styled.div`
-  width: 40px;
-  height: 40px;
-  border: 2px solid black;
-  color: red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bolder;
+const CancelButton = styled.span`
   position: relative;
-  top: -25px;
-  left: 200px;
+  top: -2%;
+  color: red;
+  left: 250px;
 `;
 
 class AddCardForm extends Component {
@@ -107,36 +117,38 @@ class AddCardForm extends Component {
           }) => (
             <CardForm onSubmit={handleSubmit}>
               <Link to="/dashboard">
-                <CancelButton>X</CancelButton>
+                <CancelButton>
+                  <FontAwesomeIcon icon="times" size="lg" />
+                </CancelButton>
               </Link>
               {touched.companyName &&
                 errors.companyName && <p>{errors.companyName}</p>}
               <CardInputLabel htmlFor="companyName">
-                Company Name
+                Company Name:
               </CardInputLabel>
               <CardInput type="text" name="companyName" />
               {touched.postingURL &&
                 errors.postingURL && <p>{errors.postingURL}</p>}
               <CardInputLabel htmlFor="postingURL">
-                Link for Posting
+                Link for Posting:
               </CardInputLabel>
               <CardInput type="text" name="postingURL" />
               {touched.contactName &&
                 errors.contactName && <p>{errors.contactName}</p>}
               <CardInputLabel htmlFor="contactName">
-                Contact Name
+                Contact Name:
               </CardInputLabel>
               <CardInput type="text" name="contactName" />
               {touched.contactEmail &&
                 errors.contactEmail && <p>{errors.contactEmail}</p>}
               <CardInputLabel htmlFor="contactEmail">
-                Contact Email
+                Contact Email:
               </CardInputLabel>
               <CardInput type="email" name="contactEmail" />
               {touched.contactPhone &&
                 errors.contactPhone && <p>{errors.contactPhone}</p>}
               <CardInputLabel htmlFor="contactPhone">
-                Contact Phone Number
+                Contact Phone Number:
               </CardInputLabel>
               <CardInput type="tel" name="contactPhone" />
               <SubmitButton type="submit" disabled={isSubmitting}>

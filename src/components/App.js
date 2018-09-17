@@ -5,6 +5,14 @@ import Dashboard from "./Dashboard";
 import PageNotFound from "./PageNotFound";
 import { connect } from "react-redux";
 
+//Getting Font Awesome Icons for the Project
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faTimes);
+
 //Secure Route for Dashboard
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
