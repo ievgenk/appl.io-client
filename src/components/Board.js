@@ -42,7 +42,6 @@ const CardList = styled.ul`
 class Board extends Component {
   render() {
     const { title, id } = this.props.boardData;
-    console.log(this.props.boardData);
     return (
       <BoardWrapper>
         <header>

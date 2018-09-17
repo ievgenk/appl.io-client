@@ -51,13 +51,12 @@ const LogForm = styled(Form)`
     transform: translateY(-7px);
     box-shadow: 15px 15px rgba(156, 252, 156, 0.8);
   }
-
-  @media screen and (max-width: 600px) {
-    padding: 50px;
-    grid-column: 1 / -1;
+  @media screen and (max-width: 550px) {
     font-size: 2rem;
-    grid-row: span 4;
-    background-color: rgba(255, 255, 255, 0.5);
+  }
+  @media screen and (max-height: 400px) {
+    font-size: 2rem;
+    min-height: fit-content;
   }
 `;
 

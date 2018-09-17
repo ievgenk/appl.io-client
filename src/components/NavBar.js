@@ -50,6 +50,9 @@ const NavBtn = styled.button`
     color: black;
     text-decoration: none;
   }
+  @media screen and (max-width: 780px) {
+    font-size: 2.5rem;
+  }
 `;
 
 class NavBar extends Component {

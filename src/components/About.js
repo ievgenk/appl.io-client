@@ -10,6 +10,22 @@ const AboutContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 20px;
+
+  @media screen and (max-width: 690px) {
+    grid-row: 2 / 8;
+    padding: 10px;
+  }
+  @media screen and (max-width: 380px) {
+    grid-column: 2 / 12;
+  }
+  @media screen and (max-height: 800px) {
+    grid-column: 2 / 12;
+  }
+  @media screen and (max-height: 600px) {
+    padding: 20px;
+    grid-row: 4 / 7;
+  }
 `;
 const AboutHeader = styled.h1`
   font-size: 4rem;
@@ -17,6 +33,8 @@ const AboutHeader = styled.h1`
 
 const AboutBody = styled.div`
   font-size: 2rem;
+  margin: 10px;
+  max-width: 80%;
 `;
 
 export default () => {

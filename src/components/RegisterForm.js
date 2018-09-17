@@ -52,6 +52,9 @@ const RegForm = styled(Form)`
     transform: translateY(-7px);
     box-shadow: 15px 15px rgba(156, 252, 156, 0.8);
   }
+  @media screen and (max-width: 550px) {
+    font-size: 2rem;
+  }
 `;
 
 class RegisterForm extends Component {
