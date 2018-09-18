@@ -61,7 +61,7 @@ const LandingGrid = styled.div`
       ". . . . . . . . . . . ."
       "ftr ftr ftr ftr ftr ftr ftr ftr ftr ftr ftr ftr";
   }
-  @media screen and (max-height: 800px) {
+  @media screen and (max-height: 600px) {
     grid-template-areas:
       "nav nav nav nav nav nav nav nav nav nav nav nav"
       ". . . . . . . . . . . ."

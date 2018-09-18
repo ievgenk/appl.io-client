@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import { clear } from "redux-localstorage-simple";
+import HamburgerMenu from "react-hamburger-menu";
 
 const MainNav = styled.nav`
   border-bottom: 3px solid black;
@@ -56,6 +57,15 @@ const NavBtn = styled.button`
 `;
 
 class NavBar extends Component {
+  state = {
+    open: false
+  };
+
+  handleClick = () => {
+    console.log("clicked");
+    this.setState(prevState => ({ open: !prevState.open }));
+  };
+
   handleLogOut = () => {
     this.props.dispatch(logoutUser());
     clear();
@@ -83,6 +93,18 @@ class NavBar extends Component {
             <Link to="#" onClick={this.handleLogOut}>
               <NavBtn>Log Out</NavBtn>
             </Link>
+
+            {/* <HamburgerMenu
+              isOpen={this.state.open}
+              menuClicked={this.handleClick}
+              width={18}
+              height={15}
+              strokeWidth={1}
+              rotate={0}
+              color="black"
+              borderRadius={0}
+              animationDuration={0.5}
+            /> */}
           </BtnContainer>
         )}
         {this.props.aboutPresent === true && (
