@@ -36,6 +36,23 @@ const CardForm = styled(Form)`
     border: none;
     border-bottom: 2px solid black;
   }
+
+  @media screen and (max-width: 768px) {
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+    font-size: 2.2rem;
+    justify-content: center;
+    transition: all 0.3s ease;
+    input {
+      font-size: 2.2rem;
+    }
+    input:focus {
+      background-color: rgba(156, 252, 156, 0.5);
+    }
+    @media screen and (max-height: 500px) {
+    }
+  }
 `;
 
 const CardInput = styled(Field)`
@@ -57,11 +74,21 @@ const SubmitButton = styled.button`
     transform: translateY(-7px);
     box-shadow: 15px 15px rgba(156, 252, 156, 0.8);
   }
+  @media screen and (max-height: 500px) {
+    padding: 10px 20px 30px 20px;
+  }
 `;
 
 const CardInputLabel = styled.label`
   font-size: 3rem;
   margin-bottom: 5px;
+  @media screen and (max-width: 768px) {
+    font-size: 2.2rem;
+  }
+  @media screen and (max-height: 500px) {
+    margin-top: 5px;
+    font-size: 1.7rem;
+  }
 `;
 
 const CancelButton = styled.span`
@@ -69,6 +96,11 @@ const CancelButton = styled.span`
   top: -2%;
   color: red;
   left: 250px;
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    top: 15px;
+    left: 85%;
+  }
 `;
 
 class AddCardForm extends Component {

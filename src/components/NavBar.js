@@ -15,7 +15,7 @@ const MainNav = styled.nav`
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-  height: ${props => (props.mobileNavOpen === true ? "40vh" : "10vh")};
+  height: ${props => (props.mobileNavOpen === true ? "25vh" : "10vh")};
   transition: all 0.4s ease;
   padding: 10px 0;
 
@@ -28,7 +28,23 @@ const MainNav = styled.nav`
   a:visited {
     color: black;
   }
+
+  @media screen and (max-width: 1050px) {
+    font-size: 2rem;
+  }
+
+  @media screen and (max-height: 500px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    padding: 10px 0;
+    height: ${props => (props.mobileNavOpen === true ? "65vh" : "15vh")};
+  }
+
   @media screen and (max-width: 600px) {
+    h1 {
+      font-size: 2.2rem;
+    }
     font-size: 1.5rem;
   }
 `;
@@ -59,8 +75,11 @@ const NavBtn = styled.button`
     color: black;
     text-decoration: none;
   }
+  @media screen and (max-width: 1050px) {
+    font-size: 2rem;
+  }
   @media screen and (max-width: 780px) {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -74,7 +93,12 @@ const MobileNavContainer = styled.div`
   justify-content: space-around;
   border-top: 2px solid black;
   align-items: center;
-  align-self: ${props => (props.mobileNavOpen === true ? "center" : "auto")};
+  align-self: ${props => (props.mobileNavOpen === true ? "flex-end" : "auto")};
+
+  @media screen and (max-width: 320px) {
+    font-size: 1.5rem;
+    padding: 10px;
+  }
 `;
 
 const HamburgerSpan = styled.span`
@@ -89,9 +113,15 @@ const MobileNavBtn = styled.button`
   padding: 5px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   background-color: white;
+  font-size: 2rem;
   cursor: pointer;
   a {
     text-decoration: none;
+  }
+
+  @media screen and (max-width: 320px) {
+    font-size: 1.5rem;
+    padding: 2px;
   }
 `;
 
@@ -145,7 +175,7 @@ class NavBar extends Component {
           </HamburgerSpan>
 
           <MobileNavContainer mobileNavOpen={this.props.mobileNavOpen}>
-            <MobileNavBtn>
+            <MobileNavBtn onClick={this.props.handleClick}>
               {this.props.router.location.pathname ===
               "/dashboard/statistics" ? (
                 <Link to="/dashboard">Dashboard</Link>
@@ -154,11 +184,15 @@ class NavBar extends Component {
               )}
             </MobileNavBtn>
             <Link to="/dashboard/add-card">
-              <MobileNavBtn>Add A Card</MobileNavBtn>
+              <MobileNavBtn onClick={this.props.handleClick}>
+                Add A Card
+              </MobileNavBtn>
             </Link>
             <Link to="#" onClick={this.handleLogOut}>
               {" "}
-              <MobileNavBtn>Log Out</MobileNavBtn>
+              <MobileNavBtn onClick={this.props.handleClick}>
+                Log Out
+              </MobileNavBtn>
             </Link>
           </MobileNavContainer>
         </MainNav>
