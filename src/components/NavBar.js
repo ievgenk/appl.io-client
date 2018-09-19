@@ -58,7 +58,20 @@ const NavBtn = styled.button`
 
 class NavBar extends Component {
   state = {
-    open: false
+    windowSize: window.innerWidth
+  };
+
+  componentDidMount = () => {
+    window.addEventListener("resize", this.handleResize);
+  };
+  componentWillUnmount = () => {
+    window.addEventListener("resize", null);
+  };
+
+  handleResize = () => {
+    this.setState(() => ({
+      windowSize: window.innerWidth
+    }));
   };
 
   handleClick = () => {
@@ -72,29 +85,14 @@ class NavBar extends Component {
   };
 
   render() {
-    return (
-      <MainNav position={this.props.position}>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <h1 className="logo">Appl.io</h1>
-        </Link>
-        {this.props.btnPresent === true && (
+    if (this.state.windowSize < 750 && this.props.btnPresent === true) {
+      return (
+        <MainNav position={this.props.position}>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <h1 className="logo">Appl.io</h1>
+          </Link>
           <BtnContainer>
-            <NavBtn>
-              {this.props.router.location.pathname ===
-              "/dashboard/statistics" ? (
-                <Link to="/dashboard">Dashboard</Link>
-              ) : (
-                <Link to="/dashboard/statistics">Statistics</Link>
-              )}
-            </NavBtn>
-            <Link to="/dashboard/add-card">
-              <NavBtn>Add A Card</NavBtn>
-            </Link>
-            <Link to="#" onClick={this.handleLogOut}>
-              <NavBtn>Log Out</NavBtn>
-            </Link>
-
-            {/* <HamburgerMenu
+            <HamburgerMenu
               isOpen={this.state.open}
               menuClicked={this.handleClick}
               width={18}
@@ -104,23 +102,49 @@ class NavBar extends Component {
               color="black"
               borderRadius={0}
               animationDuration={0.5}
-            /> */}
+            />
           </BtnContainer>
-        )}
-        {this.props.aboutPresent === true && (
-          <BtnContainer>
-            <NavBtn>
-              {this.props.router.location.pathname === "/" ||
-              this.props.router.location.pathname === "/register" ? (
-                <Link to="/about">About</Link>
-              ) : (
-                <Link to="/">Home</Link>
-              )}
-            </NavBtn>
-          </BtnContainer>
-        )}
-      </MainNav>
-    );
+        </MainNav>
+      );
+    } else {
+      return (
+        <MainNav position={this.props.position}>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <h1 className="logo">Appl.io</h1>
+          </Link>
+          {this.props.btnPresent === true && (
+            <BtnContainer>
+              <NavBtn>
+                {this.props.router.location.pathname ===
+                "/dashboard/statistics" ? (
+                  <Link to="/dashboard">Dashboard</Link>
+                ) : (
+                  <Link to="/dashboard/statistics">Statistics</Link>
+                )}
+              </NavBtn>
+              <Link to="/dashboard/add-card">
+                <NavBtn>Add A Card</NavBtn>
+              </Link>
+              <Link to="#" onClick={this.handleLogOut}>
+                <NavBtn>Log Out</NavBtn>
+              </Link>
+            </BtnContainer>
+          )}
+          {this.props.aboutPresent === true && (
+            <BtnContainer>
+              <NavBtn>
+                {this.props.router.location.pathname === "/" ||
+                this.props.router.location.pathname === "/register" ? (
+                  <Link to="/about">About</Link>
+                ) : (
+                  <Link to="/">Home</Link>
+                )}
+              </NavBtn>
+            </BtnContainer>
+          )}
+        </MainNav>
+      );
+    }
   }
 }
 

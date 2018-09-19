@@ -14,6 +14,7 @@ import {
 import { refreshStore } from "../actions/globalActions";
 import OpenCardView from "./OpenCardView";
 import { resetRedirect } from "../actions/dashboardActions";
+import { clear } from "redux-localstorage-simple";
 
 const DashboardGrid = styled.div`
   display: flex;
