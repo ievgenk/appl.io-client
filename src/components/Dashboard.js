@@ -26,6 +26,14 @@ const DashboardGrid = styled.div`
 `;
 
 class Dashboard extends Component {
+  state = {
+    mobileNavOpen: false
+  };
+
+  handleClick = () => {
+    this.setState(prevState => ({ mobileNavOpen: !prevState.mobileNavOpen }));
+  };
+
   componentDidMount = () => {
     this.props.dispatch(refreshStore());
   };
@@ -93,7 +101,11 @@ class Dashboard extends Component {
     return this.props.isLoggedIn ? (
       <DragDropContext onDragEnd={this.onDragEnd}>
         <DashboardGrid>
-          <NavBar btnPresent={true} />
+          <NavBar
+            btnPresent={true}
+            mobileNavOpen={this.state.mobileNavOpen}
+            handleClick={this.handleClick}
+          />
           <Desk
             boards={Object.values(this.props.boards)}
             cards={this.props.cards}

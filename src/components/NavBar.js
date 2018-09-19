@@ -10,14 +10,22 @@ const MainNav = styled.nav`
   border-bottom: 3px solid black;
   grid-area: nav;
   font-size: ${props => (props.position === "landing" ? "2.2rem" : "2.2rem")};
-  padding: 15px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-  height: 10vh;
+  height: ${props => (props.mobileNavOpen === true ? "40vh" : "10vh")};
+  transition: all 0.4s ease;
+  padding: 10px 0;
+
   h1 {
     margin: 0;
+    padding: 15px;
+    color: black;
+    align-self: ${props => (props.mobileNavOpen === true ? "baseline" : "")};
+  }
+  a:visited {
     color: black;
   }
   @media screen and (max-width: 600px) {
@@ -56,6 +64,37 @@ const NavBtn = styled.button`
   }
 `;
 
+const MobileNavContainer = styled.div`
+  display: ${props => (props.mobileNavOpen === true ? "flex" : "none")};
+  flex: 1 1 750px;
+  flex-direction: row;
+  padding: 15px;
+  width: 100%;
+  border-top: 3px solid black;
+  justify-content: space-around;
+  border-top: 2px solid black;
+  align-items: center;
+  align-self: ${props => (props.mobileNavOpen === true ? "center" : "auto")};
+`;
+
+const HamburgerSpan = styled.span`
+  padding: 15px;
+  align-self: ${props =>
+    props.mobileNavOpen === true ? "flex-start" : "auto"};
+`;
+
+const MobileNavBtn = styled.button`
+  margin: 5px 0;
+  border: 1px solid black;
+  padding: 5px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  cursor: pointer;
+  a {
+    text-decoration: none;
+  }
+`;
+
 class NavBar extends Component {
   state = {
     windowSize: window.innerWidth
@@ -74,11 +113,6 @@ class NavBar extends Component {
     }));
   };
 
-  handleClick = () => {
-    console.log("clicked");
-    this.setState(prevState => ({ open: !prevState.open }));
-  };
-
   handleLogOut = () => {
     this.props.dispatch(logoutUser());
     clear();
@@ -87,23 +121,46 @@ class NavBar extends Component {
   render() {
     if (this.state.windowSize < 750 && this.props.btnPresent === true) {
       return (
-        <MainNav position={this.props.position}>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <h1 className="logo">Appl.io</h1>
-          </Link>
-          <BtnContainer>
+        <MainNav
+          position={this.props.position}
+          mobileNavOpen={this.props.mobileNavOpen}
+        >
+          <h1 className="logo" mobileNavOpen={this.props.mobileNavOpen}>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              Appl.io
+            </Link>
+          </h1>
+          <HamburgerSpan mobileNavOpen={this.props.mobileNavOpen}>
             <HamburgerMenu
-              isOpen={this.state.open}
-              menuClicked={this.handleClick}
-              width={18}
-              height={15}
-              strokeWidth={1}
+              isOpen={this.props.mobileNavOpen}
+              menuClicked={this.props.handleClick}
+              width={20}
+              height={18}
+              strokeWidth={2}
               rotate={0}
               color="black"
               borderRadius={0}
               animationDuration={0.5}
             />
-          </BtnContainer>
+          </HamburgerSpan>
+
+          <MobileNavContainer mobileNavOpen={this.props.mobileNavOpen}>
+            <MobileNavBtn>
+              {this.props.router.location.pathname ===
+              "/dashboard/statistics" ? (
+                <Link to="/dashboard">Dashboard</Link>
+              ) : (
+                <Link to="/dashboard/statistics">Statistics</Link>
+              )}
+            </MobileNavBtn>
+            <Link to="/dashboard/add-card">
+              <MobileNavBtn>Add A Card</MobileNavBtn>
+            </Link>
+            <Link to="#" onClick={this.handleLogOut}>
+              {" "}
+              <MobileNavBtn>Log Out</MobileNavBtn>
+            </Link>
+          </MobileNavContainer>
         </MainNav>
       );
     } else {
