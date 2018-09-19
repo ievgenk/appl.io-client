@@ -14,6 +14,10 @@ const CardItem = styled.li`
   width: 350px;
   border: 2px grey solid;
   box-shadow: 5px 5px 5px rgba(12, 12, 12, 0.1);
+  @media screen and (max-width: 500px) {
+    width: 80%;
+    font-size: 1.7rem;
+  }
 `;
 
 class Card extends Component {

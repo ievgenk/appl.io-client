@@ -27,6 +27,13 @@ const BoardWrapper = styled.div`
     font-weight: bolder;
     padding: 10px;
   }
+  @media screen and (max-width: 500px) {
+    header h2 {
+      font-size: 2.5rem;
+    }
+
+    width: 85vw;
+  }
 `;
 
 const CardList = styled.ul`
@@ -37,6 +44,9 @@ const CardList = styled.ul`
   align-items: center;
   padding: 0;
   min-height: 250px;
+  @media screen and (max-width: 500px) {
+    min-height: 150px;
+  }
 `;
 
 class Board extends Component {

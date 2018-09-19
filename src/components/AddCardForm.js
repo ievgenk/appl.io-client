@@ -37,6 +37,12 @@ const CardForm = styled(Form)`
     border-bottom: 2px solid black;
   }
 
+  @media screen and (max-width: 1300px) {
+    width: 50%;
+    overflow: scroll;
+    font-size: 2.5rem;
+  }
+
   @media screen and (max-width: 768px) {
     height: 100%;
     overflow: auto;
@@ -74,6 +80,9 @@ const SubmitButton = styled.button`
     transform: translateY(-7px);
     box-shadow: 15px 15px rgba(156, 252, 156, 0.8);
   }
+  @media screen and (max-width: 1300px) {
+    padding: 10px 20px 30px 20px;
+  }
   @media screen and (max-height: 500px) {
     padding: 10px 20px 30px 20px;
   }
@@ -82,6 +91,11 @@ const SubmitButton = styled.button`
 const CardInputLabel = styled.label`
   font-size: 3rem;
   margin-bottom: 5px;
+
+  @media screen and (max-width: 1300px) {
+    font-size: 2.5rem;
+  }
+
   @media screen and (max-width: 768px) {
     font-size: 2.2rem;
   }
