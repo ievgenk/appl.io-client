@@ -21,7 +21,7 @@ As I am entering the job search for web developer position, I wanted to create s
 - **email:** user@test.com
 - **password:** testuser
 
-##Technologies Used
+## Technologies Used
 
 - **Testing** - Chai,Mocha,Jest,Enzyme
 - **State Management** - Redux
