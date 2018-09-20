@@ -35,10 +35,28 @@ const OpenCardForm = styled.form`
   font-size: 3rem;
   border: 3px solid black;
   box-shadow: 10px 10px 8px rgba(171, 183, 217, 0.6);
-
+  overflow: scroll;
   h1 {
     font-size: 3.5rem;
     margin: 0;
+  }
+  @media screen and (max-height: 450px) {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    font-size: 2rem;
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    font-size: 2rem;
+    h1 {
+      font-size: 2.5rem;
+    }
   }
 `;
 
@@ -48,6 +66,20 @@ const MainFlexContainer = styled.div`
   align-items: center;
   height: 70%;
   width: 90%;
+
+  @media screen and (max-height: 450px) {
+    flex-direction: column;
+    flex-flow: row wrap;
+    overflow: scroll;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    flex-flow: row wrap;
+    overflow: scroll;
+    width: 100%;
+  }
 `;
 
 const FlexBoxColumn = styled.div`
@@ -56,6 +88,11 @@ const FlexBoxColumn = styled.div`
   justify-content: center;
   flex-direction: column;
   align-self: flex-start;
+  @media screen and (max-width: 500px) {
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const CancelButton = styled.span`
@@ -69,6 +106,12 @@ const CardInputLabel = styled.label`
   margin-bottom: 5px;
   margin: 10px 0;
   font-weight: bold;
+  @media screen and (max-height: 450px) {
+    font-size: 2rem;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 2rem;
+  }
 `;
 
 const DeleteBtn = styled.button`
