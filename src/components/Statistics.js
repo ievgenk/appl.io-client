@@ -25,7 +25,7 @@ const StatsBox = styled.div`
   box-shadow: 15px 15px 15px 5px rgba(0, 0, 0, 0.1);
   font-size: 4rem;
   background-color: #ffffff;
-
+  overflow: scroll;
   h1 {
     font-size: 6rem;
     margin: 5px 0 10px 0;
@@ -41,6 +41,41 @@ const StatsBox = styled.div`
     margin: 0;
     padding: 0;
   }
+
+  @media screen and (max-width: 1100px) {
+    width: 80%;
+    h1 {
+      font-size: 4rem;
+    }
+    h2 {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    width: 80%;
+    h1 {
+      font-size: 4rem;
+    }
+    h2 {
+      font-size: 3.5rem;
+    }
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 80%;
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
 `;
 
 const GeneralBox = styled.div`
@@ -49,6 +84,29 @@ const GeneralBox = styled.div`
   justify-content: center;
   align-items: center;
   align-self: start;
+
+  @media screen and (max-width: 1100px) {
+    padding: 10px;
+    font-size: 3rem;
+  }
+
+  @media screen and (max-width: 750px) {
+    padding: 10px;
+    font-size: 3rem;
+    align-self: center;
+  }
+  @media screen and (max-height: 375px) {
+    padding: 10px;
+    align-self: center;
+    font-size: 2rem;
+    margin: 50px;
+  }
+
+  @media screen and (max-width: 400px) {
+    padding: 10px;
+    align-self: center;
+    font-size: 2rem;
+  }
 `;
 
 const AppliedBox = styled.div`
@@ -57,6 +115,30 @@ const AppliedBox = styled.div`
   justify-content: center;
   align-items: center;
   align-self: start;
+
+  @media screen and (max-width: 1100px) {
+    padding: 10px;
+    font-size: 3rem;
+  }
+
+  @media screen and (max-width: 750px) {
+    padding: 10px;
+    align-self: center;
+    font-size: 3rem;
+  }
+
+  @media screen and (max-height: 375px) {
+    padding: 10px;
+    align-self: center;
+    font-size: 2rem;
+    margin: 50px;
+  }
+
+  @media screen and (max-width: 400px) {
+    padding: 10px;
+    align-self: center;
+    font-size: 2rem;
+  }
 `;
 
 class Statistics extends Component {
@@ -86,7 +168,7 @@ class Statistics extends Component {
             <ul>
               <h2>Number of Applications</h2>
               {boardIds.map(boardId => (
-                <li>
+                <li key={boardId}>
                   {`${boards[boardId].title}:
                 ${boards[boardId].cardIds.length}`}
                 </li>

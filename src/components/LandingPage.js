@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import Footer from "./Footer";
 import About from "./About";
+
 import "react-toastify/dist/ReactToastify.css";
 
 const LandingGrid = styled.div`

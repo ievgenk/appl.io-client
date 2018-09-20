@@ -15,7 +15,7 @@ const MainNav = styled.nav`
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-  height: ${props => (props.mobileNavOpen === true ? "25vh" : "10vh")};
+  height: ${props => (props.mobilenavopen === true ? "25vh" : "10vh")};
   transition: all 0.4s ease;
   padding: 10px 0;
 
@@ -23,7 +23,7 @@ const MainNav = styled.nav`
     margin: 0;
     padding: 15px;
     color: black;
-    align-self: ${props => (props.mobileNavOpen === true ? "baseline" : "")};
+    align-self: ${props => (props.mobilenavopen === true ? "baseline" : "")};
   }
   a:visited {
     color: black;
@@ -38,7 +38,7 @@ const MainNav = styled.nav`
       font-size: 2.5rem;
     }
     padding: 10px 0;
-    height: ${props => (props.mobileNavOpen === true ? "65vh" : "15vh")};
+    height: ${props => (props.mobilenavopen === true ? "65vh" : "15vh")};
   }
 
   @media screen and (max-width: 600px) {
@@ -84,7 +84,7 @@ const NavBtn = styled.button`
 `;
 
 const MobileNavContainer = styled.div`
-  display: ${props => (props.mobileNavOpen === true ? "flex" : "none")};
+  display: ${props => (props.mobilenavopen === true ? "flex" : "none")};
   flex: 1 1 750px;
   flex-direction: row;
   padding: 15px;
@@ -93,7 +93,7 @@ const MobileNavContainer = styled.div`
   justify-content: space-around;
   border-top: 2px solid black;
   align-items: center;
-  align-self: ${props => (props.mobileNavOpen === true ? "flex-end" : "auto")};
+  align-self: ${props => (props.mobilenavopen === true ? "flex-end" : "auto")};
 
   @media screen and (max-width: 320px) {
     font-size: 1.5rem;
@@ -104,7 +104,7 @@ const MobileNavContainer = styled.div`
 const HamburgerSpan = styled.span`
   padding: 15px;
   align-self: ${props =>
-    props.mobileNavOpen === true ? "flex-start" : "auto"};
+    props.mobilenavopen === true ? "flex-start" : "auto"};
 `;
 
 const MobileNavBtn = styled.button`
@@ -153,16 +153,16 @@ class NavBar extends Component {
       return (
         <MainNav
           position={this.props.position}
-          mobileNavOpen={this.props.mobileNavOpen}
+          mobilenavopen={this.props.mobilenavopen}
         >
-          <h1 className="logo" mobileNavOpen={this.props.mobileNavOpen}>
+          <h1 className="logo" mobilenavopen={this.props.mobilenavopen}>
             <Link to="/" style={{ textDecoration: "none" }}>
               Appl.io
             </Link>
           </h1>
-          <HamburgerSpan mobileNavOpen={this.props.mobileNavOpen}>
+          <HamburgerSpan mobilenavopen={this.props.mobilenavopen}>
             <HamburgerMenu
-              isOpen={this.props.mobileNavOpen}
+              isOpen={this.props.mobilenavopen}
               menuClicked={this.props.handleClick}
               width={20}
               height={18}
@@ -174,7 +174,7 @@ class NavBar extends Component {
             />
           </HamburgerSpan>
 
-          <MobileNavContainer mobileNavOpen={this.props.mobileNavOpen}>
+          <MobileNavContainer mobilenavopen={this.props.mobilenavopen}>
             <MobileNavBtn onClick={this.props.handleClick}>
               {this.props.router.location.pathname ===
               "/dashboard/statistics" ? (

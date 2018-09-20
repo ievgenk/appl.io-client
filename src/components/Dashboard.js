@@ -27,11 +27,11 @@ const DashboardGrid = styled.div`
 
 class Dashboard extends Component {
   state = {
-    mobileNavOpen: false
+    mobilenavopen: false
   };
 
   handleClick = () => {
-    this.setState(prevState => ({ mobileNavOpen: !prevState.mobileNavOpen }));
+    this.setState(prevState => ({ mobilenavopen: !prevState.mobilenavopen }));
   };
 
   componentDidMount = () => {
@@ -103,7 +103,7 @@ class Dashboard extends Component {
         <DashboardGrid>
           <NavBar
             btnPresent={true}
-            mobileNavOpen={this.state.mobileNavOpen}
+            mobilenavopen={this.state.mobilenavopen}
             handleClick={this.handleClick}
           />
           <Desk
