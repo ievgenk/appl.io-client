@@ -1,11 +1,13 @@
 import React from "react";
 import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
-import configureStore from "redux-mock-store"; // Smart components
 import App from "../../components/App";
+import configureStore from "redux-mock-store";
+
+const createStore = configureStore();
+const store = createStore();
 
 describe("<App />", () => {
   it("Render()", () => {
-    const component = shallow(<App />);
+    shallow(<App store={store} />);
   });
 });
