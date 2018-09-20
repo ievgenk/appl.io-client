@@ -29,12 +29,18 @@ const AboutContainer = styled.div`
 `;
 const AboutHeader = styled.h1`
   font-size: 4rem;
+  @media screen and (max-width: 690px) {
+    margin: 0;
+  }
 `;
 
 const AboutBody = styled.div`
   font-size: 2rem;
   margin: 10px;
   max-width: 80%;
+  ol {
+    padding-left: 20px;
+  }
 `;
 
 export default () => {
@@ -59,7 +65,12 @@ export default () => {
           </li>
         </ol>
         <p>And a final step, find a job of your dreams!</p>
-        <p>Hey, thanks so much for stopping by and enjoy using Appl.io 😃</p>
+        <p>
+          Hey, thanks so much for stopping by and enjoy using Appl.io{" "}
+          <span role="img" aria-label="excited face emoji">
+            😃
+          </span>
+        </p>
 
         <h2>P.S</h2>
         <p>Demo Credentials are:</p>

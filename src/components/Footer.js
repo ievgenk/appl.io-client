@@ -15,7 +15,17 @@ const Footer = styled.footer`
 export default () => {
   return (
     <Footer>
-      <h3>Made with ☕ and 💖 by Evgeny Kasian. 2018.</h3>
+      <h3>
+        Made with{" "}
+        <span role="img" aria-label="coffe-mug emoji">
+          ☕
+        </span>{" "}
+        and{" "}
+        <span role="img" aria-label="heart with stars emoji">
+          💖
+        </span>{" "}
+        by Evgeny Kasian. 2018.
+      </h3>
     </Footer>
   );
 };

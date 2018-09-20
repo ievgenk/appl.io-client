@@ -14,15 +14,12 @@ import {
 import { refreshStore } from "../actions/globalActions";
 import OpenCardView from "./OpenCardView";
 import { resetRedirect } from "../actions/dashboardActions";
-import { clear } from "redux-localstorage-simple";
 
 const DashboardGrid = styled.div`
   display: flex;
   flex-direction: column;
-  /* grid-template-columns: repeat(12, 1fr); */
   height: 100vh;
   width: 100vw;
-  /* grid-template-rows: repeat(10, minmax(min-content, 2000px)); */
 `;
 
 class Dashboard extends Component {

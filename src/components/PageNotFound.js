@@ -15,7 +15,12 @@ const NotFound = styled.h1`
 export default () => {
   return (
     <ErrorWrapper>
-      <NotFound>IT APPEARS THIS PAGE DOES NOT EXIST (404) 😒</NotFound>
+      <NotFound>
+        IT APPEARS THIS PAGE DOES NOT EXIST (404){" "}
+        <span role="img" aria-label="upset face emoji">
+          😒
+        </span>
+      </NotFound>
     </ErrorWrapper>
   );
 };
