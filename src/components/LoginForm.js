@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
 import { Formik, Field, Form } from "formik";
-import { loginUser } from "../actions/authActions";
+import { loginUser, logoutUser } from "../actions/authActions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -69,6 +69,7 @@ class LoginForm extends Component {
           password: ""
         }}
         onSubmit={user => {
+          this.props.dispatch(logoutUser());
           this.props.dispatch(
             loginUser(user.email.trim(), user.password.trim())
           );
