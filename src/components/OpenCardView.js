@@ -100,6 +100,7 @@ const CancelButton = styled.span`
   top: -7%;
   color: red;
   left: 45%;
+  cursor: pointer;
 `;
 const CardInputLabel = styled.label`
   font-size: 3rem;
@@ -237,7 +238,9 @@ class OpenCardView extends Component {
               />
             </FlexBoxColumn>
           </MainFlexContainer>
-          <DeleteBtn onClick={this.handleDelete}>Delete Card</DeleteBtn>
+          <DeleteBtn onClick={this.handleDelete} type="button">
+            Delete Card
+          </DeleteBtn>
         </OpenCardForm>
       </OpenCardContainer>
     );

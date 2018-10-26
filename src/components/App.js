@@ -4,7 +4,6 @@ import LandingPage from "./LandingPage";
 import Dashboard from "./Dashboard";
 import PageNotFound from "./PageNotFound";
 import { connect } from "react-redux";
-import { clear } from "redux-localstorage-simple";
 
 //Getting Font Awesome Icons for the Project
 
@@ -36,20 +35,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const ConnectedPrivateRoute = connect(state => state)(PrivateRoute);
 
 class App extends Component {
-  clearLocalStorageRedux = () => {
-    if (this.props.router.location.pathname === "/") {
-      clear();
-    }
-  };
-
-  componentDidMount = () => {
-    this.clearLocalStorageRedux();
-  };
-
-  componentDidUpdate = () => {
-    this.clearLocalStorageRedux();
-  };
-
   render() {
     return (
       <React.Fragment>
